@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:3306/sections/3");
+      const response = await fetch("http://localhost:4000/sections/3");
       const data = await response.json();
       console.log(data.data.section);
       setSections(data.data.section);
