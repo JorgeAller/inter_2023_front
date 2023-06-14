@@ -1,0 +1,398 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black;
+
+  cursor: url("../../assets/images/faviconInterseccionWhite.png") 25 25, auto;
+}
+
+.listaBotones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  line-height: 1;
+  cursor: url("../../assets/images/faviconInterseccionBoldWhite.png") 25 25,
+    auto;
+  gap: 10px;
+}
+
+.lugarLanding {
+  font-weight: bold;
+
+  font-size: 27px;
+  margin: 0;
+  text-align: end;
+}
+.lineaLugarLanding {
+  border-color: white;
+  width: 102px;
+  display: inline-block;
+
+  margin: 9px 0px;
+}
+
+.fechalanding {
+  font-weight: bold;
+
+  font-size: 27px;
+}
+
+.lineaFechaLanding {
+  border-color: white;
+  width: 47px;
+  display: inline-block;
+
+  margin: 9px 0px;
+}
+.lineaFechaLandingEng {
+  border-color: white;
+  width: 78px;
+  display: inline-block;
+
+  margin: 9px 0px;
+}
+
+.fechaLugarLanding {
+  color: white;
+  position: fixed;
+  top: 21px;
+  right: 35px;
+  text-align: end;
+  line-height: 1.27;
+}
+
+.idiomaLanding {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  height: 30px;
+
+  justify-content: end;
+  right: 35px;
+  z-index: 12;
+  position: fixed;
+  bottom: 23px;
+}
+.idiomaButtonLanding {
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  z-index: 12;
+  cursor: url("../../assets/images/faviconInterseccionBoldWhite.png") 25 25,
+    auto;
+}
+
+.idiomaButtonLanding a:hover {
+  text-shadow: 2px 2px 5px white;
+}
+
+.redesLanding {
+  display: flex;
+  flex-direction: row;
+
+  list-style-type: none;
+  margin-bottom: 12px;
+  scale: 1;
+  position: fixed;
+  justify-content: start;
+  bottom: 22px;
+  left: 23px;
+  cursor: url("../../assets/images/faviconInterseccionBoldWhite.png") 25 25,
+    auto;
+}
+
+.redesLanding li {
+  height: 30px;
+  width: 40px;
+}
+
+.redesLanding li a {
+  cursor: url("../../assets/images/faviconInterseccionBoldWhite.png") 25 25,
+    auto;
+}
+
+.videoLanding {
+  position: fixed;
+  filter: brightness(0.1);
+  cursor: url("../../assets/images/faviconInterseccionWhite.png") 25 25, auto;
+
+  height: 100vh;
+  width: 100vw;
+}
+.imageLanding {
+  filter: invert(100%);
+  position: fixed;
+  top: 15px;
+  left: 25px;
+  width: 280px;
+}
+
+.fill-text {
+  position: relative;
+  font-weight: 900;
+  font-size: 75px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+}
+.fill-text:before {
+  content: attr(data-text);
+  position: absolute;
+}
+
+.wrapper {
+  position: relative;
+}
+.wrapper a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: url("../../assets/images/faviconInterseccionBoldWhite.png") 25 25,
+    auto;
+}
+.wrapper a:nth-child(1) {
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 50%);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+.wrapper a:nth-child(1):hover ~ .fill-text:before {
+  --fill-from: circle(0% at 50% 0%);
+  --fill-to: circle(150% at 0% 50%);
+  -webkit-animation: fill-text 0s forwards;
+  animation: fill-text 0s forwards;
+}
+
+.wrapper a:nth-child(2) {
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+}
+.wrapper a:nth-child(2):hover ~ .fill-text:before {
+  --fill-from: circle(0% at 150% 50%);
+  --fill-to: circle(100% at 50% 50%);
+  -webkit-animation: fill-text 0s forwards;
+  animation: fill-text 0s forwards;
+}
+
+.wrapper a:nth-child(3) {
+  -webkit-clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+  clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+}
+.wrapper a:nth-child(3):hover ~ .fill-text:before {
+  --fill-from: circle(0% at 50% 100%);
+  --fill-to: circle(150% at 0% 50%);
+  -webkit-animation: fill-text 0s forwards;
+  animation: fill-text 0s forwards;
+}
+
+.wrapper a:nth-child(4) {
+  -webkit-clip-path: polygon(0 0, 50% 50%, 0 100%);
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+}
+.wrapper a:nth-child(4):hover ~ .fill-text:before {
+  --fill-from: circle(0% at 0% 50%);
+  --fill-to: circle(150% at 0% 50%);
+  -webkit-animation: fill-text 0s forwards;
+  animation: fill-text 0s forwards;
+}
+
+.wrapper a:hover {
+  -webkit-clip-path: none;
+  clip-path: none;
+  z-index: 2;
+}
+
+@-webkit-keyframes fill-text {
+  0% {
+    -webkit-clip-path: var(--fill-from);
+    clip-path: var(--fill-from);
+  }
+  100% {
+    -webkit-clip-path: var(--fill-to);
+    clip-path: var(--fill-to);
+    color: white;
+  }
+}
+
+@keyframes fill-text {
+  0% {
+    -webkit-clip-path: var(--fill-from);
+    clip-path: var(--fill-from);
+  }
+  100% {
+    -webkit-clip-path: var(--fill-to);
+    clip-path: var(--fill-to);
+    color: white;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 700px) {
+  .imageLanding {
+    width: 175px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+
+  .fechalanding {
+    font-weight: bold;
+
+    font-size: 18px;
+  }
+
+  .lugarLanding {
+    font-weight: bold;
+
+    font-size: 18px;
+    margin: 0;
+    text-align: end;
+  }
+
+  .fechaLugarLanding {
+    color: white;
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    text-align: end;
+    line-height: 1.27;
+  }
+
+  .lineaLugarLanding {
+    border-color: white;
+    width: 40px;
+    display: inline-block;
+
+    margin: 6px 0px;
+  }
+  .lineaFechaLanding {
+    border-color: white;
+    width: 5px;
+    display: inline-block;
+
+    margin: 6px 0px;
+  }
+
+  .fill-text {
+    position: relative;
+    font-weight: 900;
+    font-size: 50px;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+  }
+
+  .redesLanding {
+    scale: 0.8;
+    bottom: 10px;
+    left: 0px;
+  }
+
+  .idiomaLanding {
+    scale: 0.8;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  .imageLanding {
+    width: 175px;
+  }
+
+  .fechalanding {
+    font-size: 14px;
+  }
+
+  .lugarLanding {
+    font-size: 14px;
+  }
+
+  .fechaLugarLanding {
+    top: 20px;
+  }
+
+  .lineaLugarLanding {
+    width: 40px;
+
+    margin: 6px 0px;
+  }
+  .lineaFechaLanding {
+    width: 10px;
+    margin: 6px 0px;
+  }
+
+  .fill-text {
+    font-size: 40px;
+    -webkit-text-stroke: 0.5px white;
+  }
+
+  .redesLanding {
+    scale: 0.7;
+  }
+
+  .idiomaLanding {
+    scale: 0.7;
+  }
+}
+
+@media (max-width: 405px) {
+  .fechalanding {
+    font-size: 16px;
+  }
+
+  .lugarLanding {
+    font-size: 16px;
+  }
+
+  .fechaLugarLanding {
+    top: -10px;
+    right: 0px;
+    margin-top: 35px;
+    position: relative;
+    z-index: 500;
+  }
+
+  .lineaLugarLanding {
+    width: 44px;
+
+    margin: 6px 0px;
+  }
+  .lineaFechaLanding {
+    width: 10px;
+    margin: 6px 0px;
+  }
+  .landing {
+    justify-content: start;
+  }
+  .imageLanding {
+    position: relative;
+    top: 15px;
+    left: -10px;
+    width: 200px;
+  }
+
+  .listaBotones {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .redesLanding {
+    scale: 0.6;
+    bottom: 6px;
+    left: -10px;
+  }
+
+  .idiomaLanding {
+    scale: 0.6;
+    bottom: 10px;
+    right: 10px;
+  }
+}

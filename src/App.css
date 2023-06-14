@@ -1,42 +1,309 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+:root {
+  --color1: rgb(31, 138, 75);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  cursor: url("./assets/images/faviconInterseccion.png") 15 15, auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 40px);
+
+  animation: transition 550ms ease-out;
+}
+
+a {
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+
+@keyframes transition {
+  0% {
+    opacity: 0%;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 100%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.marquee {
+  padding-right: 4rem;
+}
+
+.contenido {
+  margin-top: 110px;
+  margin-left: 330px;
+
+  margin-bottom: 1rem;
+
+  overflow: none;
+  overflow-y: none;
+}
+.bannerDiv {
+  cursor: url("./assets/images/faviconInterseccion.png");
+}
+.holi {
+  position: relative;
+  bottom: 29px;
+}
+
+.tituloBanner {
+  position: relative;
+  top: 3px;
+  overflow: hidden;
+  font-size-adjust: auto;
+
+  line-height: 1;
+}
+.tituloBanner:hover {
+  color: black;
+}
+
+.noticiaTitle {
+  -webkit-text-stroke: 0px;
+  font-weight: 900;
+  font-size: 180px;
+  /* color: rgb(31, 138, 75); */
+  -webkit-text-stroke: 3px black;
+  color: transparent;
+}
+
+.noticiaTitle:hover {
+  color: black;
+  -webkit-text-stroke: 0px;
+  /* cursor: url("./assets/images/faviconInterseccion.png") 15 15, auto; */
+}
+
+.noticiaTitleIndividual {
+  cursor: url("./assets/images/faviconInterseccion.png") 15 15, auto;
+}
+
+.noticiasPageTitle {
+  -webkit-text-stroke: 0px;
+
+  color: black;
+}
+
+.noticias {
+  flex: 1;
+
+  display: grid;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 455px);
+  gap: 40px;
+  padding: 8px 25px;
+
+  width: 100%;
+}
+
+.tituloNoticia {
+  width: 100%;
+  position: relative;
+  text-transform: uppercase;
+  height: 325px;
+  line-height: 80px;
+  font-size: 55px;
+  font-weight: 900;
+  overflow: hidden;
+}
+
+.tituloNoticia img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%) brightness(50%);
+}
+
+.titulo {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: white;
+  text-shadow: 6px 6px 15px black;
+}
+
+.titulo:hover {
+  color: rgb(31, 138, 75);
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+.titulito {
+  width: 100%;
+  position: absolute;
+  font-size: 45px;
+  top: 5px;
+  left: 10px;
+  color: white;
+  text-shadow: 6px 6px 15px black;
+}
+.titulito:hover {
+  color: rgb(31, 138, 75);
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+
+.titulazo {
+  width: 100%;
+  position: absolute;
+  font-size: 53px;
+  line-height: 1.6;
+  top: 0px;
+  left: 10px;
+  color: white;
+  text-shadow: 6px 6px 15px black;
+}
+.titulazo:hover {
+  color: rgb(31, 138, 75);
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+.noticia img {
+  width: 100%;
+  height: 100%;
+}
+
+.descripcionPrevia {
+  background-color: rgb(195, 220, 204);
+  padding: 15px;
+  font-weight: 300;
+  font-size: 15px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 2 lines */
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+  height: 10px;
+  background-color: rgb(195, 220, 204);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(31, 138, 75);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(15, 69, 37);
+  border-radius: 10px;
+}
+
+header::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgb(31, 138, 75);
+  direction: rtl;
+  position: fixed; /* Cambiado a position: fixed */
+  right: 0;
+  z-index: 999;
+  overflow: visible;
+}
+header::-webkit-scrollbar-thumb {
+  background-color: rgb(195, 220, 204);
+  border-radius: 5px;
+}
+header::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(15, 69, 37);
+  border-radius: 5px;
+}
+
+@media (min-width: 2120px) {
+  .noticias {
+    justify-content: start;
   }
+  /* Regla CSS que se aplicará solo si la pantalla es más grande de 2100px */
+}
+@media (min-width: 2320px) {
+  /* Regla CSS que se aplicará solo si la pantalla es más grande de 2100px */
+}
+@media (max-width: 1850px) {
+  .tituloBanner {
+    position: relative;
+    top: 13px;
+  }
+
+  .noticiaTitle {
+    font-size: 150px;
+  }
+
+  .noticias {
+    padding-top: 44px;
+    grid-template-columns: repeat(auto-fit, 355px);
+    gap: 30px;
+  }
+  .tituloNoticia {
+    width: 100%;
+    position: relative;
+
+    height: 253px;
+    line-height: 62px;
+    font-size: 42px;
+    font-weight: 900;
+    overflow: hidden;
+  }
+
+  .tituloNoticia img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%) brightness(50%);
+  }
+
+  .titulito {
+    font-size: 35px;
+  }
+  .titulito img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%) brightness(50%);
+  }
+
+  .titulo {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: white;
+    text-shadow: 6px 6px 15px black;
+  }
+
+  .titulo:hover {
+    color: rgb(31, 138, 75);
+    cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+  }
+
+  .contenido {
+    margin-top: 93px;
+  }
+
+  /* Regla CSS que se aplicará solo si la pantalla es más grande de 2100px */
 }
 
-.card {
-  padding: 2em;
-}
+@media (max-width: 500px) {
+  header {
+    background-color: black;
+  }
+  .contenido {
+    margin-top: 80px;
+    margin-left: 0px;
+  }
+  .contenedorTitulo {
+    left: 00px;
+    width: 100%;
+  }
+  .noticiaTitle {
+    font-size: 75px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .noticias {
+    justify-content: center;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .openMain {
+    display: none;
+  }
 }

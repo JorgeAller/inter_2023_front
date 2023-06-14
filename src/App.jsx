@@ -1,36 +1,21 @@
-import { useState, useEffect } from "react";
+import { LanguageProvider } from "./lang/LanguageProvider/LanguageProvider";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/router";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 import "./App.css";
 
-function App() {
-  const [sections, setSections] = useState([]);
+export const BASIC_URL = import.meta.env.VITE_PUBLIC_URL;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:4000/sections/3");
-      const data = await response.json();
-      console.log(data.data.section);
-      setSections(data.data.section);
-    };
-    fetchData();
-  }, []);
-
+export const App = () => {
   return (
-    <>
-      {sections.map((section) => (
-        <div key={section.id}>
-          <h1>{section.id}</h1>
-          <h2>{section.title}</h2>
-          <h3>{section.place}</h3>
-          <h3>{section.date}</h3>
-          <h3>{section.hour}</h3>
-          <p>{section.duration} min</p>
-          <p>{section.bio}</p>
-          <p>{section.cur_text}</p>
-        </div>
-      ))}
-    </>
+    <Provider store={store}>
+      <LanguageProvider>
+        <RouterProvider router={router} />
+      </LanguageProvider>
+    </Provider>
   );
-}
+};
 
 export default App;

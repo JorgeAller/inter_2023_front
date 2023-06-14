@@ -1,0 +1,77 @@
+.menuDesplegablesHeader {
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+
+.menuSecciones {
+  text-align: end;
+
+  list-style-type: none;
+}
+.menuSecciones a {
+  text-decoration: none;
+  color: inherit;
+}
+.programa {
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.programa div {
+  display: flex; /* Hacer que el enlace sea un contenedor flexible */
+  align-items: center; /* Alinear verticalmente los elementos dentro del enlace */
+  text-decoration: none;
+  color: inherit;
+}
+/* .programa div {
+  position: ;
+} */
+
+.programa a:hover {
+  cursor: url("../../assets/images/faviconInterseccionBold.png") 20 20, auto;
+  color: white;
+}
+
+.tipoSecciones > a {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tipoSecciones a:hover {
+  cursor: url("../../assets/images/faviconInterseccionBold.png") 20 20, auto;
+  font-weight: bold;
+}
+
+.listaSecciones {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.listaSecciones li {
+  font-weight: 400;
+  margin-block-end: 5px;
+  margin-top: 10px;
+
+  list-style-type: none;
+}
+
+.listaSecciones li:hover {
+  font-weight: bold;
+  cursor: url("../../assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+
+.listaSecciones a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.oculto {
+  display: none;
+}
