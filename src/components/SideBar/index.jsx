@@ -7,6 +7,7 @@ import "./style.css";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { setLanguage } from "../../redux/slices/configurationSlice.js";
+import { BotonesIdioma } from "../BotonesIdioma/BotonesIdioma.jsx";
 
 const SideBar = () => {
   /* ###########################################################
@@ -29,11 +30,8 @@ const SideBar = () => {
     localStorage.getItem("selectedLang")
   );
 
-  const dispatch = useDispatch();
-  const handleSelectorLanguage = (language) => {
-    dispatch(setLanguage(language));
-    setSelectedLanguage(language);
-  };
+  
+  
 
   return (
     <header>
@@ -109,50 +107,7 @@ const SideBar = () => {
             />
           </li>
         </ul>
-        <ul className="idioma">
-          <li
-            className={`${
-              selectedLanguage === "gl"
-                ? "idiomaButtonSelected"
-                : "idiomaButton"
-            }`}
-            key="gl"
-            value="gl"
-            onClick={() => {
-              handleSelectorLanguage("gl");
-            }}
-          >
-            gl
-          </li>
-          <li
-            className={`${
-              selectedLanguage === "en"
-                ? "idiomaButtonSelected"
-                : "idiomaButton"
-            }`}
-            key="en"
-            value="en"
-            onClick={() => {
-              handleSelectorLanguage("en");
-            }}
-          >
-            en
-          </li>
-          <li
-            className={`${
-              selectedLanguage === "es-ES"
-                ? "idiomaButtonSelected"
-                : "idiomaButton"
-            }`}
-            key="es-ES"
-            value="es-ES"
-            onClick={() => {
-              handleSelectorLanguage("es-ES");
-            }}
-          >
-            es
-          </li>
-        </ul>
+        <BotonesIdioma selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage}/>
       </nav>
 
       <hr className="lineaSeparadoraLogoAbajo"></hr>
