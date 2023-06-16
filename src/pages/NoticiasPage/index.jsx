@@ -1,9 +1,32 @@
 /* import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import TituloBannerMove from "../../components/TituloBannerMove"; */
+import { useNavigate } from "react-router-dom";*/
+import TituloBannerMove from "../../components/TituloBannerMove"; 
 
 export const NoticiasPage = () => {
-  return <p color="black">hola</p>;
+  return (
+    <section className="contenido">
+      <div className={`contenedorTitulo `}>
+        <TituloBannerMove
+          titulo={
+            <div
+            className="noticiaTitle"
+            style={{
+              color: "black",
+              cursor: "default",
+              WebkitTextStroke: "0px",
+            }}
+            >
+              TEST &nbsp; TEST &nbsp; TEST &nbsp; TEST &nbsp; TEST
+              &nbsp; TEST &nbsp; TEST &nbsp; TEST &nbsp; TEST &nbsp;
+              TEST &nbsp; TEST &nbsp; TEST &nbsp; TEST &nbsp; TEST
+              &nbsp; TEST &nbsp; TEST &nbsp;
+            </div>
+          }
+          speed={60}
+          ></TituloBannerMove>
+      </div>
+    </section>
+  )
 };
 
 /* const navigate = useNavigate();

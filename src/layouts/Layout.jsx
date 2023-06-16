@@ -1,23 +1,31 @@
 import { Box } from "@mui/material";
 import SideBar from "../components/SideBar";
 import { Outlet } from "react-router-dom";
+import BurgerMenu from "../components/BurgerMenu";
+import BackButton from "../components/BackButton";
 
 const Layout = () => {
   return (
+    <>
+    <SideBar />
+    <BackButton/>
+    <BurgerMenu/>
+    
+
     <Box
       component="main"
       sx={{
         display: "flex",
       }}
     >
-      <SideBar />
-
-      <Box component="div">
-        <Outlet />
-      </Box>
+      
+        <Box component="div">
+          <Outlet />
+        </Box>
 
       {/* <Footer /> */}
     </Box>
+      </>
   );
 };
 

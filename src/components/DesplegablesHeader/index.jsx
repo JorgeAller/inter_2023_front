@@ -5,6 +5,7 @@ import { BASIC_URL } from "../../App";
 import { useIntl } from "react-intl";
 
 import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const DesplegablesHeader = () => {
   /* ###########################################################
@@ -21,6 +22,8 @@ const DesplegablesHeader = () => {
   const [seccionesVisibles, setSeccionesVisibles] = useState({});
   const indice = "noticias";
 
+  console.log({seccionesVisibles});
+
   return (
     <nav className="menuDesplegablesHeader">
       <ul className="menuSecciones">
@@ -34,7 +37,7 @@ const DesplegablesHeader = () => {
               }));
             }}
           >
-            <AddIcon sx={{ fontSize: "28px" }} />
+            {seccionesVisibles.noticias ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" , mb:'3.5px'}} />} 
             <a href={`${BASIC_URL}/noticias`}>{noticias} </a>
           </div>
           <ul
@@ -94,8 +97,8 @@ const DesplegablesHeader = () => {
 
         <li className="programa ">
           <div>
-            <AddIcon sx={{ fontSize: "28px" }} />
-            <a href="/echoes">ECHOES</a>
+          {seccionesVisibles.echoes ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" ,mb:'3.5px' }} />} 
+            <a style={{marginTop:'2px'}} href="/echoes">ECHOES</a>
           </div>
         </li>
 
@@ -117,7 +120,7 @@ const DesplegablesHeader = () => {
               }));
             }}
           >
-            <AddIcon sx={{ fontSize: "28px" }} />
+            {seccionesVisibles.programa ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px", mb:'3.5px' }} />} 
             <a href={`${BASIC_URL}/noticias`}>{programa} </a>
           </div>
 

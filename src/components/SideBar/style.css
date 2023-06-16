@@ -15,7 +15,7 @@
   border-color: black;
   width: 100%;
   display: inline-block;
-  margin: 5px 0px 47px 0px;
+  margin: 5px 0px 34px 0px;
 }
 
 .oculto {
@@ -141,7 +141,7 @@ header img {
 }
 
 .botonesNegrosHeader {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .lineaMedioFechaaa {
@@ -164,7 +164,7 @@ header img {
     margin: 10px 0px 10px 0px;
   }
   .lineaSeparadoraLogoAbajo {
-    margin: 20px 0px 34px 0px;
+    margin: 20px 0px 20px 0px;
   }
 
   .botonesPequeños {

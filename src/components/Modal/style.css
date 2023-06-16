@@ -1,0 +1,118 @@
+.modalBack {
+  background-color: rgba(255, 255, 255, 0.563);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  cursor: url("../../../assets/images/faviconInterseccionBold.png");
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.modalContainer {
+  /* min-height: 650px;
+  min-width: 650px;
+
+  max-width: 650px;
+  max-height: 650px; */
+
+  width: 60vw;
+  height: 60vw;
+  max-width: 80vh;
+  max-height: 80vh;
+  box-shadow: 2px 2px 40px rgb(15, 49, 29);
+  background: linear-gradient(
+    -45deg,
+    rgb(140, 203, 167),
+    rgb(31, 138, 75),
+    rgb(36, 126, 73),
+    rgb(25, 78, 47)
+  );
+  background-size: 300% 300%;
+
+  border-radius: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  animation: zoom-in-zoom-out 1s ease-out, change 10s ease-in-out infinite;
+
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+@keyframes change {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(0, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.buttonCancel {
+  margin-top: 1rem;
+  width: 3rem;
+}
+
+.buttonCancel:hover {
+  scale: 1.2;
+}
+
+@media (max-height: 775px) {
+  .modalContainer {
+    /* min-height: 450px;
+    min-width: 450px;
+
+    max-width: 450px;
+    max-height: 450px; */
+  }
+}
+
+@media (max-height: 500px) {
+  .modalContainer {
+    /* min-height: 350px;
+    min-width: 350px;
+
+    max-width: 350px;
+    max-height: 350px; */
+  }
+
+  .buttonCancel {
+    margin-top: 0px;
+    width: 2rem;
+  }
+}
+
+@media (max-height: 400px) {
+  .modalContainer {
+    /* min-height: 250px;
+    min-width: 250px;
+
+    max-width: 250px;
+    max-height: 250px; */
+  }
+
+  .buttonCancel {
+    margin-top: 0px;
+    width: 2rem;
+  }
+}

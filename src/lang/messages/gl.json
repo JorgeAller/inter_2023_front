@@ -3,5 +3,10 @@
   "fecha": "OUTUBRO",
   "lugar": "ESPAÑA",
   "noticias": "NOTICIAS",
-  "programa": "PROGRAMA"
+  "programa": "PROGRAMA",
+
+  "------------------------ BURGER MENU --------------------------": "",
+  "burgerMenuMas": "MÁIS",
+  "burgerMenuMenos": "MENOS",
+  "burgerMenuCosas": "COUSAS"
 }

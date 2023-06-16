@@ -21,7 +21,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 40px);
-
+  margin-left: 330px;
   animation: transition 550ms ease-out;
 }
 
@@ -44,8 +44,6 @@ a {
 
 .contenido {
   margin-top: 110px;
-  margin-left: 330px;
-
   margin-bottom: 1rem;
 
   overflow: none;
