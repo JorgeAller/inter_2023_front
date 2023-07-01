@@ -1,0 +1,8 @@
+.botonesColores{
+    position: absolute;
+    right: calc(50% - 200px);
+    top: 35px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}

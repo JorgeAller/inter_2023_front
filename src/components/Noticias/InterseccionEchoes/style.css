@@ -1,0 +1,53 @@
+.contenedorTituloNoticia {
+  position: relative;
+  left: 0px;
+  bottom: 40px;
+  line-height: 2;
+  font-size: 100px;
+  z-index: 3;
+}
+
+.contenedorTituloNoticia.ñ {
+  line-height: 1.5;
+}
+
+.contenedorTitulo.holi .tituloBanner {
+  font-size: 110px;
+}
+.awssld {
+  --slider-height-percentage: 65%;
+  --slider-transition-duration: 297ms;
+  --organic-arrow-thickness: 13px;
+  --organic-arrow-border-radius: 0px;
+  --organic-arrow-height: 59px;
+  --organic-arrow-color: #000000;
+  --control-button-width: 11%;
+  --control-button-height: 25%;
+  --control-button-background: transparent;
+  --control-bullet-color: #000000;
+  --control-bullet-active-color: #1f8a4c;
+  --loader-bar-color: #1f8a4c;
+  --loader-bar-height: 6px;
+}
+.noticiaTitleIndividual {
+  position: relative;
+  font-size: 120px;
+  font-weight: 900;
+  color: black;
+  cursor: url("../../../../assets/images/faviconInterseccion.png");
+  line-height: 165px;
+}
+
+@media (max-width: 1850px) {
+  .noticiaTitleIndividual {
+    position: relative;
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 500px) {
+  .noticiaTitleIndividual {
+    font-size: 30px;
+    line-height: 50px;
+  }
+}

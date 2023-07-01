@@ -1,3 +1,5 @@
+
+
 .proximamente {
   font-weight: 900;
   font-size: 32px;
@@ -39,7 +41,7 @@ header {
   flex-direction: column;
   position: fixed;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   border-right: 2px solid black;
 }
 

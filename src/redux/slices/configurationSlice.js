@@ -33,7 +33,11 @@ export const configurationSlice = createSlice({
       state.desplegables.echoes = false;
       state.desplegables.programa = false;
     },
+    setColor: (state, action) => {
+      state.color = action.payload;
+      localStorage.setItem("selectedColor", action.payload);
+    },
   },
 });
 
-export const { setLanguage, setDesplegablesPrograma, setDesplegablesEchoes , setDesplegablesNoticias} = configurationSlice.actions;
+export const { setLanguage, setDesplegablesPrograma, setDesplegablesEchoes , setDesplegablesNoticias, setColor} = configurationSlice.actions;

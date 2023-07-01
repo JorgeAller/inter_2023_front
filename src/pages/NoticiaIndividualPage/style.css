@@ -1,0 +1,85 @@
+.imagenNoticia {
+  width: 100%;
+  height: 100%;
+}
+
+.noticiaIndividual {
+  padding: 25px 25px;
+}
+
+.noticiaTitlePaginaIndividual {
+  -webkit-text-stroke: 0px;
+  font-weight: 900;
+  font-size: 180px;
+  /* color: rgb(31, 138, 75); */
+  -webkit-text-stroke: 3px black;
+  color: transparent;
+}
+
+.noticiaTitlePaginaIndividual:hover {
+  color: black;
+  -webkit-text-stroke: 0px;
+  cursor: url("../../../assets/images/faviconInterseccionBold.png") 20 20, auto;
+}
+.noticiaCompleta {
+  position: relative;
+  top: -25px;
+  cursor: url("../../../assets/images/faviconInterseccion.png") 15 15, auto;
+}
+.imagenDescripcionContainer {
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 8px;
+  width: 50%;
+  max-width: 550px;
+  min-width: 350px;
+}
+
+.descripcionImagenNoticia {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 2;
+  overflow-wrap: normal;
+  display: inline;
+  color: #888;
+}
+
+.textoNoticia {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+@media (max-width: 1850px) {
+  .noticiaCompleta {
+    bottom: 35px;
+  }
+  .noticiaTitlePaginaIndividual {
+    font-size: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .imagenNoticia {
+    width: 100%;
+    height: 100%;
+  }
+  .imagenDescripcionContainer {
+    float: left;
+    padding-right: 50px;
+    margin-bottom: 8px;
+    width: 100vw;
+  }
+  .noticiaIndividual {
+    padding: 25px 25px;
+    width: 100%;
+  }
+  .noticiaCompleta {
+    position: relative;
+    top: -5px;
+    width: 100%;
+  }
+  .descripcionImagenNoticia {
+    width: 100vw;
+    padding-right: 50px;
+  }
+}

@@ -1,6 +1,8 @@
-/* import { useState } from "react";
-import { useNavigate } from "react-router-dom";*/
+ import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TituloBannerMove from "../../components/TituloBannerMove"; 
+import { BASIC_URL } from "../../App";
+import { useSelector } from "react-redux";
 
 export const NoticiasPage = () => {
   return (
@@ -83,235 +85,250 @@ export const NoticiasPage = () => {
   // const [isExpanded9, setIsExpanded9] = useState(false);
   // const [isExpanded10, setIsExpanded10] = useState(false);
 
+
+  const selectedColor = useSelector((state) => state.configuration.color);
+
   return (
     <section className="contenido">
-      <div className="bannerDiv">
-        <TituloBannerMove
-          titulo={
-            <div
-              className="noticiaTitle"
-              style={{
-                color: "black",
+    <div className="bannerDiv">
+      <TituloBannerMove
+        titulo={
+          <div
+            className="noticiaTitle"
+            style={{
+              color: "black",
 
-                WebkitTextStroke: "0px",
-              }}
-            >
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-            </div>
-          }
-          speed={60}
-        ></TituloBannerMove>
+              WebkitTextStroke: "0px",
+            }}
+          >
+            NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+            NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+            NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+            NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+          </div>
+        }
+        speed={60}
+      ></TituloBannerMove>
+    </div>
+
+    <section className="noticias">
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/interseccion-echoes-viaja-a-costa-rica");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/costa_rica_vacia.jpg`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            Intersección echoes <br></br> viaxa a <br></br> Costa Rica
+          </div>
+        </div>
+
+        <div
+          className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded7(!isExpanded7)}
+          onMouseOut={() => setIsExpanded7(!isExpanded7)}
+          style={{backgroundColor: selectedColor}}
+        >
+          {isExpanded7
+            ? descCostaRica
+            : truncateDescription(descCostaRica, 1)}
+        </div>
       </div>
 
-      <section className="noticias">
-        <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/interseccion-echoes-viaja-a-costa-rica");
-          }}
-        >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/costa_rica_vacia.jpg`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              Intersección echoes <br></br> viaxa a <br></br> Costa Rica
-            </div>
-          </div>
-
-          <div
-            className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded7(!isExpanded7)}
-            onMouseOut={() => setIsExpanded7(!isExpanded7)}
-          >
-            {isExpanded7
-              ? descCostaRica
-              : truncateDescription(descCostaRica, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/miradas-diversas-a-coruna");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/miradas_diversas_2.jpg`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            Miradas <br></br> Diversas <br></br> a coruña
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/miradas-diversas-a-coruna");
-          }}
+          className={`descripcionPrevia ${isExpanded8 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded8(!isExpanded8)}
+          onMouseOut={() => setIsExpanded8(!isExpanded8)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/miradas_diversas_2.jpg`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              Miradas <br></br> Diversas <br></br> a coruña
-            </div>
-          </div>
+          {isExpanded8 ? descMiradas2 : truncateDescription(descMiradas2, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded8 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded8(!isExpanded8)}
-            onMouseOut={() => setIsExpanded8(!isExpanded8)}
-          >
-            {isExpanded8 ? descMiradas2 : truncateDescription(descMiradas2, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/interseccion-echoes-viaja-a-medellin");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/LAIDA.png`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            Intersección echoes <br></br> viaxa a Medellin
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/interseccion-echoes-viaja-a-medellin");
-          }}
+          className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded5(!isExpanded5)}
+          onMouseOut={() => setIsExpanded5(!isExpanded5)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/LAIDA.png`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              Intersección echoes <br></br> viaxa a Medellin
-            </div>
-          </div>
+          {isExpanded5 ? descMedellin : truncateDescription(descMedellin, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded5(!isExpanded5)}
-            onMouseOut={() => setIsExpanded5(!isExpanded5)}
-          >
-            {isExpanded5 ? descMedellin : truncateDescription(descMedellin, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/interseccion-colaborador-en-los-premios-goya");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/goya.jpg`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulito">
+            INTERSECCIÓN, colaborador <br></br>nos Premios Goya
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/interseccion-colaborador-en-los-premios-goya");
-          }}
+          className={`descripcionPrevia ${isExpanded6 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded6(!isExpanded6)}
+          onMouseOut={() => setIsExpanded6(!isExpanded6)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/goya.jpg`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulito">
-              INTERSECCIÓN, colaborador <br></br>nos Premios Goya
-            </div>
-          </div>
+          {isExpanded6 ? descGoya : truncateDescription(descGoya, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded6 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded6(!isExpanded6)}
-            onMouseOut={() => setIsExpanded6(!isExpanded6)}
-          >
-            {isExpanded6 ? descGoya : truncateDescription(descGoya, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/interseccion-echoes-viaja-a-argentina");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/INTERSECCIONECHOES_Argentina(3).png`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            Intersección echoes <br></br> viaxa a arxentina
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/interseccion-echoes-viaja-a-argentina");
-          }}
+          className={`descripcionPrevia ${isExpanded4 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded4(!isExpanded4)}
+          onMouseOut={() => setIsExpanded4(!isExpanded4)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/INTERSECCIONECHOES_Argentina(3).png`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              Intersección echoes <br></br> viaxa a arxentina
-            </div>
-          </div>
+          {isExpanded4
+            ? descArxentina
+            : truncateDescription(descArxentina, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded4 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded4(!isExpanded4)}
-            onMouseOut={() => setIsExpanded4(!isExpanded4)}
-          >
-            {isExpanded4
-              ? descArxentina
-              : truncateDescription(descArxentina, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate("/noticia/comienza-miradas-diversas-a-coruna");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/Miradas_Diversas_A_Coruna.png`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            Comeza Miradas Diversas <br></br>A Coruña
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate("/noticia/comienza-miradas-diversas-a-coruna");
-          }}
+          className={`descripcionPrevia ${isExpanded3 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded3(!isExpanded3)}
+          onMouseOut={() => setIsExpanded3(!isExpanded3)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/Miradas_Diversas_A_Coruna.png`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              Comeza Miradas Diversas <br></br>A Coruña
-            </div>
-          </div>
+          {isExpanded3 ? descMiradas : truncateDescription(descMiradas, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded3 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded3(!isExpanded3)}
-            onMouseOut={() => setIsExpanded3(!isExpanded3)}
-          >
-            {isExpanded3 ? descMiradas : truncateDescription(descMiradas, 1)}
+      <div
+        className="noticia"
+        onClick={() => {
+          navigate(
+            "/noticia/abiertas-las-convocatorias-para-participar-en-interseccion"
+          );
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/OPEN_CALL_2.png`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulito">
+            Abertas as convocatorias para participar en INTERSECCIÓN
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={() => {
-            navigate(
-              "/noticia/abiertas-las-convocatorias-para-participar-en-interseccion"
-            );
-          }}
+          className={`descripcionPrevia ${isExpanded2 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded2(!isExpanded2)}
+          onMouseOut={() => setIsExpanded2(!isExpanded2)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/OPEN_CALL_2.png`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulito">
-              Abertas as convocatorias para participar en INTERSECCIÓN
-            </div>
-          </div>
+          {isExpanded2 ? descOpenCall : truncateDescription(descOpenCall, 1)}
+        </div>
+      </div>
 
-          <div
-            className={`descripcionPrevia ${isExpanded2 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded2(!isExpanded2)}
-            onMouseOut={() => setIsExpanded2(!isExpanded2)}
-          >
-            {isExpanded2 ? descOpenCall : truncateDescription(descOpenCall, 1)}
+      <div
+        className="noticia"
+        onClick={(event) => {
+          navigate("/noticia/interseccion-echoes-viaja-a-uruguay");
+        }}
+      >
+        <div className="tituloNoticia">
+          <img
+            src={`${BASIC_URL}/images/echoes.png`}
+            alt="foto de Noticia"
+          ></img>
+          <div className="titulo">
+            INTERSECCIÓN ECHOES <br></br>viaxa a Uruguay
           </div>
         </div>
 
         <div
-          className="noticia"
-          onClick={(event) => {
-            navigate("/noticia/interseccion-echoes-viaja-a-uruguay");
-          }}
+          className={`descripcionPrevia ${isExpanded1 ? "expanded" : ""}`}
+          onMouseEnter={() => setIsExpanded1(!isExpanded1)}
+          onMouseOut={() => setIsExpanded1(!isExpanded1)}
+          style={{backgroundColor: selectedColor}}
         >
-          <div className="tituloNoticia">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/echoes.png`}
-              alt="foto de Noticia"
-            ></img>
-            <div className="titulo">
-              INTERSECCIÓN ECHOES <br></br>viaxa a Uruguay
-            </div>
-          </div>
-
-          <div
-            className={`descripcionPrevia ${isExpanded1 ? "expanded" : ""}`}
-            onMouseEnter={() => setIsExpanded1(!isExpanded1)}
-            onMouseOut={() => setIsExpanded1(!isExpanded1)}
-          >
-            {isExpanded1 ? desc : truncateDescription(desc, 1)}
-          </div>
+          {isExpanded1 ? desc : truncateDescription(desc, 1)}
         </div>
-      </section>
+      </div>
     </section>
-  ); */
+  </section>
+  )
+};
+
+ 
+ 
