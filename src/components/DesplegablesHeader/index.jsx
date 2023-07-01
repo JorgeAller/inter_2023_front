@@ -5,7 +5,9 @@ import { BASIC_URL } from "../../App";
 import { useIntl } from "react-intl";
 
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from '@mui/icons-material/Remove';
+import RemoveIcon from "@mui/icons-material/Remove";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const DesplegablesHeader = () => {
   /* ###########################################################
@@ -22,7 +24,7 @@ const DesplegablesHeader = () => {
   const [seccionesVisibles, setSeccionesVisibles] = useState({});
   const indice = "noticias";
 
-  console.log({seccionesVisibles});
+  console.log({ seccionesVisibles });
 
   return (
     <nav className="menuDesplegablesHeader">
@@ -37,7 +39,11 @@ const DesplegablesHeader = () => {
               }));
             }}
           >
-            {seccionesVisibles.noticias ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" , mb:'3.5px'}} />} 
+            {seccionesVisibles.noticias ? (
+              <RemoveIcon sx={{ fontSize: "28px", mb: "3.5px" }} />
+            ) : (
+              <AddIcon sx={{ fontSize: "28px", mb: "3.5px" }} />
+            )}
             <a href={`${BASIC_URL}/noticias`}>{noticias} </a>
           </div>
           <ul
@@ -97,8 +103,14 @@ const DesplegablesHeader = () => {
 
         <li className="programa ">
           <div>
-          {seccionesVisibles.echoes ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" ,mb:'3.5px' }} />} 
-            <a style={{marginTop:'2px'}} href="/echoes">ECHOES</a>
+            {seccionesVisibles.echoes ? (
+              <RemoveIcon sx={{ fontSize: "28px", mb: "3.5px" }} />
+            ) : (
+              <AddIcon sx={{ fontSize: "28px", mb: "3.5px" }} />
+            )}
+            <a style={{ marginTop: "2px" }} href="/echoes">
+              ECHOES
+            </a>
           </div>
         </li>
 
@@ -120,8 +132,12 @@ const DesplegablesHeader = () => {
               }));
             }}
           >
-            {seccionesVisibles.programa ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px", mb:'3.5px' }} />} 
-            <a href={`${BASIC_URL}/noticias`}>{programa} </a>
+            <a href={`${BASIC_URL}/programa`}>{programa} </a>
+            {seccionesVisibles.programa ? (
+              <ArrowDropUpIcon sx={{ fontSize: "30px", mb: "3.5px" }} />
+            ) : (
+              <ArrowDropDownIcon sx={{ fontSize: "30px", mb: "2.8px" }} />
+            )}
           </div>
 
           <ul

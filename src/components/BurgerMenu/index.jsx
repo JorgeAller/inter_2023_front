@@ -7,6 +7,7 @@ import { useLocation, Link } from "react-router-dom";
 import Modal from "../Modal/index.jsx";
 import { useIntl } from "react-intl";
 import { BotonesIdioma } from "../BotonesIdioma/BotonesIdioma";
+import { BASIC_URL } from "../../App";
 
 const BurgerMenu = () => {
 
@@ -117,17 +118,17 @@ const BurgerMenu = () => {
             </div>
             <ul className="listaContenido">
               <li>
-                <a href={`${process.env.PUBLIC_URL}/open-call`}>OPEN CALL</a>{" "}
+                <a href={`${BASIC_URL}/open-call`}>OPEN CALL</a>{" "}
                 {/*PALMARÉS*/}
               </li>
               <li>
-                <a href={`${process.env.PUBLIC_URL}/open-call-lab`}>
+                <a href={`${BASIC_URL}/open-call-lab`}>
                   OPEN CALL LAB
                 </a>{" "}
                 {/*PALMARÉS*/}
               </li>
               <li>
-                <a href={`${process.env.PUBLIC_URL}/noticias`}>{noticias}</a>{" "}
+                <a href={`${BASIC_URL}/noticias`}>{noticias}</a>{" "}
                 {/*PALMARÉS*/}
               </li>
               {/* <li>

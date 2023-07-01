@@ -1,0 +1,91 @@
+.secciones {
+  flex: 1;
+
+  display: grid;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 700px);
+  gap: 30px;
+  padding: 8px 30px;
+
+  width: 100%;
+}
+
+.generalSesion {
+  font-weight: 300;
+  font-size: 15px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 2 lines */
+  cursor: url("./assets/images/faviconInterseccionBold.png") 20 20, auto;
+  color: white;
+}
+
+.tituloSesion{
+  font-size: 25px;
+  font-weight: 900;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+
+.informaciónSesion{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-left: 10px;
+
+}
+
+
+/* POR SI HACE FALTA CUALQUIER COSA ESPECIFICA EN ESTA PARTE
+/* .fechaSesion{
+
+}
+.horaSesion{
+
+}
+.lugarSesion{
+
+} */
+
+.obraSesión{
+  background-color: black;
+  display: grid;
+  grid-template-columns: 4fr 2fr repeat(2, 0.5fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 12px;
+  border-bottom: 1px solid white;
+}
+
+/* .tituloObra{
+
+}
+.autorObra{
+
+}*/
+.añoObra{
+  text-align: end;
+} 
+.duracionObra{
+  text-align: end;
+}
+
+
+
+
+@media (max-width: 1850px) {
+
+  .secciones {
+    padding-top: 44px;
+    grid-template-columns: repeat(auto-fit, 600px);
+    gap: 30px;
+  }
+}

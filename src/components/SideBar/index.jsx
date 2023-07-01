@@ -5,7 +5,7 @@ import BotonesNegros from "../BotonesNegros/index.jsx";
 import DesplegablesHeader from "../DesplegablesHeader/index.jsx";
 import "./style.css";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../../redux/slices/configurationSlice.js";
 import { BotonesIdioma } from "../BotonesIdioma/BotonesIdioma.jsx";
 
@@ -29,12 +29,13 @@ const SideBar = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("selectedLang")
   );
-
+  const selectedColor = useSelector((state)=>state.configuration.color)
   
+
   
 
   return (
-    <header>
+    <header style={{ backgroundColor: selectedColor }}>
       <img
         src={`${import.meta.env.VITE_PUBLIC_URL}/images/logoInterseccion.png`}
         alt="logoIntersección"
@@ -107,7 +108,10 @@ const SideBar = () => {
             />
           </li>
         </ul>
-        <BotonesIdioma selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage}/>
+        <BotonesIdioma
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
+        />
       </nav>
 
       <hr className="lineaSeparadoraLogoAbajo"></hr>
