@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./style.css";
 import { BASIC_URL } from "../../App";
@@ -6,6 +6,10 @@ import { useIntl } from "react-intl";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from '@mui/icons-material/Remove';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { useDispatch, useSelector } from "react-redux";
+import { setDesplegablesEchoes, setDesplegablesNoticias, setDesplegablesPrograma } from "../../redux/slices/configurationSlice";
 
 const DesplegablesHeader = () => {
   /* ###########################################################
@@ -19,30 +23,90 @@ const DesplegablesHeader = () => {
 ############# FIN DELCARACIONES DE TRADUCCIONES ###############
 ############################################################### */
 
-  const [seccionesVisibles, setSeccionesVisibles] = useState({});
-  const indice = "noticias";
+  const desplegablePrograma = useSelector((state)=>state.configuration.desplegables.programa);
+  const desplegableEchoes = useSelector((state)=>state.configuration.desplegables.echoes);
+  const desplegableNoticias = useSelector((state)=>state.configuration.desplegables.noticias);
+  console.log({desplegablePrograma});
+  console.log({desplegableEchoes});
+  console.log({desplegableNoticias});
 
-  console.log({seccionesVisibles});
+  const dispatch = useDispatch()
+  
 
   return (
     <nav className="menuDesplegablesHeader">
       <ul className="menuSecciones">
+      <li className="programa">
+          <div
+            className="expandir-icono"
+            onClick={() => {
+              dispatch(setDesplegablesPrograma(!desplegablePrograma))
+            }}
+          >
+            <Link to='/programa'>{programa} </Link>
+            {desplegablePrograma ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px', mr:-1, ml:-0.5, '&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px", mb:'3.5px', mr: -1, ml:-0.5 }} />} 
+          </div>
+
+          <ul
+            className={`listaSecciones ${
+              desplegablePrograma ? "" : "oculto"
+            }`}
+          >
+            <li className="tipoSecciones">
+              <a>SECCIONES COMPETITIVAS</a>
+              <ul className="listaSecciones">
+                <li>
+                  <a>internacional</a>
+                </li>
+                <li>
+                  <a>galicia</a>
+                </li>
+                <li>
+                  <a>escolas</a>
+                </li>
+              </ul>
+            </li>
+            <li className="tipoSecciones">
+              <a>SECCIONES NO COMPETITIVAS </a>
+              <ul className="listaSecciones">
+                LISTA DE SECCIONES NO COMPETITIVAS
+                <li>
+                  <a>Una caida, una polla</a>
+                </li>
+                <li>
+                  <a>Gonzalo y amigos</a>
+                </li>
+                <li>
+                  <a>David Fidalgo despues de 7 años intentandolo</a>
+                </li>
+                <li>
+                  <a>Sección que nadie verña</a>
+                </li>
+                <li>
+                  <a>VR</a>
+                </li>
+                <li>
+                  <a>Bocata calamares</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
         <li className="programa ">
           <div
             className="expandir-icono"
             onClick={() => {
-              setSeccionesVisibles((prevState) => ({
-                ...prevState,
-                [indice]: !prevState[indice],
-              }));
+              dispatch(setDesplegablesNoticias(!desplegableNoticias))
+              
             }}
           >
-            {seccionesVisibles.noticias ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" , mb:'3.5px'}} />} 
-            <a href={`${BASIC_URL}/noticias`}>{noticias} </a>
+            <Link to='/noticias'>{noticias} </Link>
+            {desplegableNoticias ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px',mr: -1,ml: -0.5, '&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px" , mb:'3.5px', mr:-1, ml: -0.5}} />} 
           </div>
           <ul
             className={`listaSecciones ${
-              seccionesVisibles[indice] ? "" : "oculto"
+              desplegableNoticias ? "" : "oculto"
             }`}
           >
             <li>
@@ -96,79 +160,26 @@ const DesplegablesHeader = () => {
         </li>
 
         <li className="programa ">
-          <div>
-          {seccionesVisibles.echoes ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px" ,mb:'3.5px' }} />} 
-            <a style={{marginTop:'2px'}} href="/echoes">ECHOES</a>
-          </div>
-        </li>
-
-        <li className="programa  ">
-          <a href="/open-call">OPEN CALL</a>
-        </li>
-
-        <li className="programa  ">
-          <a href="/open-call-lab">OPEN CALL LAB</a>
-        </li>
-
-        <li className="programa">
-          <div
+          <div 
             className="expandir-icono"
             onClick={() => {
-              setSeccionesVisibles((prevState) => ({
-                ...prevState,
-                programa: !prevState.programa,
-              }));
+              dispatch(setDesplegablesEchoes(!desplegableEchoes))
             }}
           >
-            {seccionesVisibles.programa ? <RemoveIcon sx={{ fontSize: "28px", mb:'3.5px' }}/> : <AddIcon sx={{ fontSize: "28px", mb:'3.5px' }} />} 
-            <a href={`${BASIC_URL}/noticias`}>{programa} </a>
+            <Link style={{marginTop:'2px'}} to="/echoes">ECHOES</Link>
+          {desplegableEchoes ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px', mr: -1, ml: -0.5,'&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px" ,mb:'3.5px', mr: -1, ml: -0.5}} />} 
           </div>
-
-          <ul
-            className={`listaSecciones ${
-              seccionesVisibles.programa ? "" : "oculto"
-            }`}
-          >
-            <li className="tipoSecciones">
-              <a>SECCIONES COMPETITIVAS</a>
-              <ul className="listaSecciones">
-                <li>
-                  <a>internacional</a>
-                </li>
-                <li>
-                  <a>galicia</a>
-                </li>
-                <li>
-                  <a>escolas</a>
-                </li>
-              </ul>
-            </li>
-            <li className="tipoSecciones">
-              <a>SECCIONES NO COMPETITIVAS </a>
-              <ul className="listaSecciones">
-                LISTA DE SECCIONES NO COMPETITIVAS
-                <li>
-                  <a>Una caida, una polla</a>
-                </li>
-                <li>
-                  <a>Gonzalo y amigos</a>
-                </li>
-                <li>
-                  <a>David Fidalgo despues de 7 años intentandolo</a>
-                </li>
-                <li>
-                  <a>Sección que nadie verña</a>
-                </li>
-                <li>
-                  <a>VR</a>
-                </li>
-                <li>
-                  <a>Bocata calamares</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </li>
+
+        <li className="programa " style={{height: '40px'}}>
+          <Link to="/open-call">OPEN CALL</Link>
+        </li>
+
+        <li className="programa  " style={{height: '40px'}}>
+          <Link to="/open-call-lab">OPEN CALL LAB</Link>
+        </li>
+
+        
 
         {/*
     </li>

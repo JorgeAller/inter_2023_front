@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";*/
 import TituloBannerMove from "../../components/TituloBannerMove"; 
 
-export const NoticiasPage = () => {
+export const ProgramacionPage = () => {
   return (
     <section className="contenido">
       <div className={`contenedorTitulo `}>
@@ -16,10 +16,10 @@ export const NoticiasPage = () => {
               WebkitTextStroke: "0px",
             }}
             >
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
-              &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
-              &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+              PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA
+              &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp;
+              PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA
+              &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp;
             </div>
           }
           speed={60}

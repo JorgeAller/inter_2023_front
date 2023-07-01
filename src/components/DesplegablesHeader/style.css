@@ -16,7 +16,7 @@
 .programa {
   font-size: 25px;
   font-weight: 900;
-  margin-bottom: 8px;
+ justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -74,4 +74,9 @@
 
 .oculto {
   display: none;
+}
+
+.expandir-icono:hover {
+ color: white; 
+ cursor: url('../../assets/images/faviconInterseccionBold.png') 20 20, auto;
 }

@@ -39,7 +39,7 @@ export const LandingPage = () => {
         loop="loop"
         playsInline="playsInline"
         className="videoLanding"
-      ></video>
+      />
 
       <div className="landing">
         <img
@@ -49,7 +49,7 @@ export const LandingPage = () => {
             navigate("/");
           }}
           className="imageLanding"
-        ></img>
+        />
 
         <div className="fechaLugarLanding">
           <div className="fechalanding">
@@ -62,7 +62,7 @@ export const LandingPage = () => {
         </div>
 
         <div className="listaBotones">
-          {/* <div className="wrapper">
+          <div className="wrapper">
             <a href="/echoes"></a>
             <a href="/echoes"></a>
             <a href="/echoes"></a>
@@ -70,8 +70,17 @@ export const LandingPage = () => {
             <div className="fill-text" data-text="ECHOES">
               ECHOES
             </div>
-        </div>*/}
+          </div>
 
+          <div className="wrapper">
+            <a href="/programa"></a>
+            <a href="/programa"></a>
+            <a href="/programa"></a>
+            <a href="/programa"></a>
+            <div className="fill-text" data-text="PROGRAMA">
+              PROGRAMA
+            </div>
+          </div>
           <div className="wrapper">
             <a href="/open-call"></a>
             <a href="/open-call"></a>
