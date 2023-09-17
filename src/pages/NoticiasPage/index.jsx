@@ -2,36 +2,39 @@
 import { useNavigate } from "react-router-dom";
 import TituloBannerMove from "../../components/TituloBannerMove"; 
 import { BASIC_URL } from "../../App";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setDesplegablesNoticias } from "../../redux/slices/configurationSlice";
+import { Box } from "@mui/material";
 
 export const NoticiasPage = () => {
-  return (
-    <section className="contenido">
-      <div className={`contenedorTitulo `}>
-        <TituloBannerMove
-          titulo={
-            <div
-            className="noticiaTitle"
-            style={{
-              color: "black",
-              cursor: "default",
-              WebkitTextStroke: "0px",
-            }}
-            >
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
-              &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-              NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
-              &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-            </div>
-          }
-          speed={60}
-          ></TituloBannerMove>
-      </div>
-    </section>
+/*   return (
+    <>
+      <section >
+        <div >
+          <TituloBannerMove
+            titulo={
+              <div
+              style={{
+                color: "black",
+                cursor: "default",
+                WebkitTextStroke: "0px",
+              }}
+              >
+                NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
+                &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+                NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS
+                &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
+              </div>
+            }
+            speed={60}
+            ></TituloBannerMove>
+        </div>
+      </section>
+    </>
   )
-};
+}; */
 
-/* const navigate = useNavigate();
+ const navigate = useNavigate();
   const desc =
     '"Corpo, sexualidade e imaxe. O humano e o íntimo", un proxecto comisariado por INTERSECCIÓN, visitará Montevideo o 6 e o 10 de abril, inaugurando así o programa INTERSECCIÓN ECHOES no cal o festival busca exportar o talento das nosas artistas polo mundo.';
 
@@ -55,12 +58,12 @@ export const NoticiasPage = () => {
   const descMiradas2 =
     'Cada ano, "Miradas Diversas a Coruña" gaña máis importancia en INTERSECCIÓN. Porque Coruña é diversa e así debemos ser as súas creadoras';
 
-  const truncateDescription = (description, maxLines) => {
+   const truncateDescription = (description, maxLines) => {
     const words = description.split(" ");
     let lines = [];
     let line = "";
     for (let i = 0; i < words.length; i++) {
-      if (line.length + words[i].length <= 135) {
+      if (line.length + words[i].length <= 150) {
         line += ` ${words[i]}`;
       } else {
         lines.push(line);
@@ -72,40 +75,43 @@ export const NoticiasPage = () => {
       lines.slice(0, maxLines).join(" ") +
       (lines.length > maxLines ? "..." : "")
     );
-  };
+  }; 
 
-  const [isExpanded1, setIsExpanded1] = useState(false);
+  /* const [isExpanded1, setIsExpanded1] = useState(false);
   const [isExpanded2, setIsExpanded2] = useState(false);
   const [isExpanded3, setIsExpanded3] = useState(false);
   const [isExpanded4, setIsExpanded4] = useState(false);
   const [isExpanded5, setIsExpanded5] = useState(false);
   const [isExpanded6, setIsExpanded6] = useState(false);
   const [isExpanded7, setIsExpanded7] = useState(false);
-  const [isExpanded8, setIsExpanded8] = useState(false);
+  const [isExpanded8, setIsExpanded8] = useState(false); */
   // const [isExpanded9, setIsExpanded9] = useState(false);
   // const [isExpanded10, setIsExpanded10] = useState(false);
 
 
   const selectedColor = useSelector((state) => state.configuration.color);
 
+  const dispatch = useDispatch();
+  dispatch(setDesplegablesNoticias(true));
+
   return (
-    <section className="contenido">
+    <section >
     <div className="bannerDiv">
       <TituloBannerMove
         titulo={
-          <div
-            className="noticiaTitle"
-            style={{
+          <Box
+            sx={{
               color: "black",
-
-              WebkitTextStroke: "0px",
+              cursor: "default",
+              fontWeight: 900,
+              fontSize: '180px',
             }}
           >
             NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
             NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
             NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
             NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp; NOTICIAS &nbsp;
-          </div>
+          </Box>
         }
         speed={60}
       ></TituloBannerMove>
@@ -129,18 +135,13 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded7(!isExpanded7)}
-          onMouseOut={() => setIsExpanded7(!isExpanded7)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia`}
         >
-          {isExpanded7
-            ? descCostaRica
-            : truncateDescription(descCostaRica, 1)}
+          {truncateDescription(descCostaRica, 1)}
         </div>
       </div>
 
-      <div
+       <div
         className="noticia"
         onClick={() => {
           navigate("/noticia/miradas-diversas-a-coruna");
@@ -157,12 +158,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded8 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded8(!isExpanded8)}
-          onMouseOut={() => setIsExpanded8(!isExpanded8)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia `}
         >
-          {isExpanded8 ? descMiradas2 : truncateDescription(descMiradas2, 1)}
+          {truncateDescription(descMiradas2, 1)}
         </div>
       </div>
 
@@ -183,12 +181,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded7 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded5(!isExpanded5)}
-          onMouseOut={() => setIsExpanded5(!isExpanded5)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia `}
         >
-          {isExpanded5 ? descMedellin : truncateDescription(descMedellin, 1)}
+          {truncateDescription(descMedellin, 1)}
         </div>
       </div>
 
@@ -209,12 +204,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded6 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded6(!isExpanded6)}
-          onMouseOut={() => setIsExpanded6(!isExpanded6)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia`}
         >
-          {isExpanded6 ? descGoya : truncateDescription(descGoya, 1)}
+          {truncateDescription(descGoya, 1)}
         </div>
       </div>
 
@@ -235,14 +227,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded4 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded4(!isExpanded4)}
-          onMouseOut={() => setIsExpanded4(!isExpanded4)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia `}
         >
-          {isExpanded4
-            ? descArxentina
-            : truncateDescription(descArxentina, 1)}
+          {truncateDescription(descArxentina, 1)}
         </div>
       </div>
 
@@ -263,12 +250,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded3 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded3(!isExpanded3)}
-          onMouseOut={() => setIsExpanded3(!isExpanded3)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia`}
         >
-          {isExpanded3 ? descMiradas : truncateDescription(descMiradas, 1)}
+          {truncateDescription(descMiradas, 1)}
         </div>
       </div>
 
@@ -291,12 +275,9 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded2 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded2(!isExpanded2)}
-          onMouseOut={() => setIsExpanded2(!isExpanded2)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia`}
         >
-          {isExpanded2 ? descOpenCall : truncateDescription(descOpenCall, 1)}
+          {truncateDescription(descOpenCall, 1)}
         </div>
       </div>
 
@@ -317,14 +298,11 @@ export const NoticiasPage = () => {
         </div>
 
         <div
-          className={`descripcionPrevia ${isExpanded1 ? "expanded" : ""}`}
-          onMouseEnter={() => setIsExpanded1(!isExpanded1)}
-          onMouseOut={() => setIsExpanded1(!isExpanded1)}
-          style={{backgroundColor: selectedColor}}
+          className={`descripcionPrevia`}
         >
-          {isExpanded1 ? desc : truncateDescription(desc, 1)}
+          {truncateDescription(desc, 1)}
         </div>
-      </div>
+      </div> 
     </section>
   </section>
   )

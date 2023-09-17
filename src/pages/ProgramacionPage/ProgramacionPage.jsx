@@ -1,26 +1,32 @@
 /* import { useState } from "react";
 import { useNavigate } from "react-router-dom";*/
+import { Box } from "@mui/material";
 import TituloBannerMove from "../../components/TituloBannerMove"; 
 
 export const ProgramacionPage = () => {
   return (
-    <section className="contenido">
-      <div className={`contenedorTitulo `}>
+    <section >
+      <div >
         <TituloBannerMove
           titulo={
-            <div
-            className="noticiaTitle"
-            style={{
-              color: "black",
-              cursor: "default",
-              WebkitTextStroke: "0px",
-            }}
+            <Box
+              sx={{
+                color: "black",
+                cursor: "default",
+                fontWeight: 900,
+                fontSize: {
+                  xs: '80px',
+                  md: '100px',
+                  lg: '150px',
+                  xl: '180px'
+              },
+              }}
             >
               PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA
               &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp;
               PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp; PROGRAMA
               &nbsp; PROGRAMA &nbsp; PROGRAMA &nbsp;
-            </div>
+            </Box>
           }
           speed={60}
           ></TituloBannerMove>
@@ -84,12 +90,11 @@ export const ProgramacionPage = () => {
   // const [isExpanded10, setIsExpanded10] = useState(false);
 
   return (
-    <section className="contenido">
+    <section >
       <div className="bannerDiv">
         <TituloBannerMove
           titulo={
             <div
-              className="noticiaTitle"
               style={{
                 color: "black",
 

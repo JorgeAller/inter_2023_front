@@ -1,8 +1,9 @@
-import { useDispatch } from "react-redux";
-import { setColor } from "../../redux/slices/configurationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setColor, setDarkMode } from "../../redux/slices/configurationSlice";
 import "./style.css"
 import CircleIcon from '@mui/icons-material/Circle';
 import { useState } from "react";
+import { DarkMode, LightMode } from "@mui/icons-material";
 
 export const BotonesColores = () => {
   const dispatch = useDispatch();
@@ -11,9 +12,17 @@ export const BotonesColores = () => {
     setSelectedColor(color);
   };
 
+  const darkMode = useSelector((state) => state.configuration.darkMode)
+
+  const handleDarkMode = () => {
+    dispatch(setDarkMode(!darkMode));
+  };
+
+
   const [selectedColor, setSelectedColor] = useState(
     localStorage.getItem("selectedColor")
   );
+
 
   return (
     <ul className="botonesColores">
@@ -46,6 +55,21 @@ export const BotonesColores = () => {
       >
         <CircleIcon sx={{ color: 'var(--color3)' }} fontSize="large" />
       </li>
+
+      <li
+        key='darkMode'
+        value='darkMode'
+        onClick={() => {
+          handleDarkMode();
+        }}
+      >
+        { darkMode 
+          ? <LightMode sx={{ color: 'white' }} fontSize="large" />
+          : <DarkMode sx={{ color: 'black' }} fontSize="large" /> 
+        }
+      </li>
+
+     
     </ul>
   );
 };

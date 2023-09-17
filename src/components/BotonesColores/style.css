@@ -1,6 +1,6 @@
 .botonesColores{
-    position: absolute;
-    right: calc(50% - 200px);
+   
+    justify-content: center;
     top: 35px;
     display: flex;
     flex-direction: row;

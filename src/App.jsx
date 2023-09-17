@@ -5,16 +5,20 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
 import "./App.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const BASIC_URL = import.meta.env.VITE_PUBLIC_URL;
+export const BASE_URL_BBDD = import.meta.env.VITE_BASE_URL
 
 export const App = () => {
   return (
-    <Provider store={store}>
-      <LanguageProvider>
-        <RouterProvider router={router} />
-      </LanguageProvider>
-    </Provider>
+    <QueryClientProvider client={new QueryClient()}>
+      <Provider store={store}>
+        <LanguageProvider>
+          <RouterProvider router={router} />
+        </LanguageProvider>
+      </Provider>
+    </QueryClientProvider>
   );
 };
 

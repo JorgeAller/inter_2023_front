@@ -1,0 +1,35 @@
+
+
+.documentosLegales {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  align-items: start;
+  margin: 0px 20px;
+  height: 100%;
+  padding: 30px
+}
+.docsButton {
+  color: white;
+
+  list-style-type: none;
+
+  text-align: center;
+  line-height: 10px;
+  margin: 0px 10px;
+}
+
+.docsButton a {
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+  font-weight: 500;
+  overflow-wrap: normal;
+}
+
+@media (max-width: 500px) {
+  footer {
+    margin-left: 0px;
+  }
+}

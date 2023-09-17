@@ -30,7 +30,7 @@ const DesplegablesHeader = () => {
   console.log({desplegableEchoes});
   console.log({desplegableNoticias});
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
 
   return (
@@ -56,37 +56,36 @@ const DesplegablesHeader = () => {
               <a>SECCIONES COMPETITIVAS</a>
               <ul className="listaSecciones">
                 <li>
-                  <a>internacional</a>
+                  <Link>internacional</Link>
                 </li>
                 <li>
-                  <a>galicia</a>
+                  <Link>galicia</Link>
                 </li>
                 <li>
-                  <a>escolas</a>
+                  <Link>escolas</Link>
                 </li>
               </ul>
             </li>
             <li className="tipoSecciones">
-              <a>SECCIONES NO COMPETITIVAS </a>
+              <Link>SECCIONES NO COMPETITIVAS </Link>
               <ul className="listaSecciones">
-                LISTA DE SECCIONES NO COMPETITIVAS
                 <li>
-                  <a>Una caida, una polla</a>
+                  <Link>Una caida, una polla</Link>
                 </li>
                 <li>
-                  <a>Gonzalo y amigos</a>
+                  <Link>Gonzalo y amigos</Link>
                 </li>
                 <li>
-                  <a>David Fidalgo despues de 7 años intentandolo</a>
+                  <Link>David Fidalgo despues de 7 años intentandolo</Link>
                 </li>
                 <li>
-                  <a>Sección que nadie verña</a>
+                  <Link>Sección que nadie verña</Link>
                 </li>
                 <li>
-                  <a>VR</a>
+                  <Link>VR</Link>
                 </li>
                 <li>
-                  <a>Bocata calamares</a>
+                  <Link>Bocata calamares</Link>
                 </li>
               </ul>
             </li>
@@ -110,45 +109,45 @@ const DesplegablesHeader = () => {
             }`}
           >
             <li>
-              <a href="/noticia/interseccion-echoes-viaja-a-costa-rica">
+              <Link to="/noticia/interseccion-echoes-viaja-a-costa-rica">
                 INTERSECCION ECHOES viaxa a <br></br> Costa Rica{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/miradas-diversas-a-coruna">
+              <Link to="/noticia/miradas-diversas-a-coruna">
                 Miradas Diversas A Coruña{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/interseccion-echoes-viaja-a-medellin">
+              <Link to="/noticia/interseccion-echoes-viaja-a-medellin">
                 INTERSECCION ECHOES viaxa a Medellín{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/interseccion-colaborador-en-los-premios-goya">
+              <Link to="/noticia/interseccion-colaborador-en-los-premios-goya">
                 INTERSECCIÓN, colaborador nos Premios Goya
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/interseccion-echoes-viaja-a-argentina">
+              <Link to="/noticia/interseccion-echoes-viaja-a-argentina">
                 INTERSECCION ECHOES viaxa a Arxentina{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/comienza-miradas-diversas-a-coruna">
+              <Link to="/noticia/comienza-miradas-diversas-a-coruna">
                 Comeza Miradas Diversas A Coruña{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/abiertas-las-convocatorias-para-participar-en-interseccion">
+              <Link to="/noticia/abiertas-las-convocatorias-para-participar-en-interseccion">
                 Abertas as convocatorias para participar en INTERSECCIÓN{" "}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/noticia/interseccion-echoes-viaja-a-uruguay">
+              <Link to="/noticia/interseccion-echoes-viaja-a-uruguay">
                 {" "}
                 INTERSECCIÓN ECHOES viaxa a Uruguay
-              </a>
+              </Link>
             </li>
             {/*<li>
             <a>Viva la seoane </a>

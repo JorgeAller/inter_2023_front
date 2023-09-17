@@ -1,20 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import "./style.css";
 import { BASIC_URL } from "../../App";
+import { Box } from "@mui/material";
 
 const LogoInterseccion = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="logoInterseccion">
-      <img
+    <Box 
+        component='img' 
         src={`${BASIC_URL}/images/logoInterseccion.png`}
         alt="logoIntersección"
         onClick={() => {
           navigate("/");
         }}
-      ></img>
-    </div>
+        sx={{
+            width: '175px'
+        }}
+    >
+    </Box>
   );
 };
 

@@ -7,7 +7,9 @@ const initialState = {
     programa:  true,
     echoes:  false,
     noticias:  false
-  }
+  },
+  color: 'var(--color1)',
+  darkMode: false/*  window.matchMedia('(prefers-color-scheme: dark)').matches */
 };
 
 export const configurationSlice = createSlice({
@@ -37,7 +39,11 @@ export const configurationSlice = createSlice({
       state.color = action.payload;
       localStorage.setItem("selectedColor", action.payload);
     },
+    setDarkMode: (state) => {
+      state.darkMode = !state.darkMode;
+      localStorage.setItem("darkMode", !state.darkMode)
+    }
   },
 });
 
-export const { setLanguage, setDesplegablesPrograma, setDesplegablesEchoes , setDesplegablesNoticias, setColor} = configurationSlice.actions;
+export const { setLanguage, setDesplegablesPrograma, setDesplegablesEchoes , setDesplegablesNoticias, setColor, setDarkMode} = configurationSlice.actions;

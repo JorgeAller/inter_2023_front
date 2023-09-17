@@ -55,7 +55,6 @@ const Modal = ({ children, setShowModal }) => {
         src={buttonCancel}
         alt="buttonCancel"
         className="buttonCancel"
-        style={{ cursor: "pointer" }}
         onClick={(event) => {
           event.preventDefault();
           setShowModal(false);

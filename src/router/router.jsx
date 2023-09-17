@@ -21,19 +21,25 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "noticias", element: pages.noticiasPage },
-      { path: "programa", element: pages.seccionesPage },
-      { path: "sesiones", element: pages.sesionesPage },
+      { path: "programa", element: pages.programaPage },
+      { path: "section", element: pages.sectionPage },
+      { path: "sesion", element: pages.sessionPage },
       { path: "echoes", element: pages.echoesPage },
+      { path: "people", element: pages.peoplePage },
+      { path: "/noticia/interseccion-echoes-viaja-a-costa-rica", element: <NoticiaIndividualPage noticia={<InterseccionEchoes2 />} /> },
+      { path: "/noticia/miradas-diversas-a-coruna", element: <NoticiaIndividualPage noticia={<MiradasDiversas2 />} /> },
+      { path: "/noticia/interseccion-echoes-viaja-a-medellin", element: <NoticiaIndividualPage noticia={<InterseccionMedellin />} /> },
+      { path: "/noticia/interseccion-colaborador-en-los-premios-goya", element: <NoticiaIndividualPage noticia={<PremiosGoya />} /> },
+      { path: "/noticia/interseccion-echoes-viaja-a-argentina", element: <NoticiaIndividualPage noticia={<InterseccionArgentina />} /> },
+      { path: "/noticia/comienza-miradas-diversas-a-coruna", element: <NoticiaIndividualPage noticia={<MiradasDiversas />} /> },
+      { path: "/noticia/interseccion-echoes-viaja-a-uruguay", element: <NoticiaIndividualPage noticia={<InterseccionEchoes />} /> },
+      { path: "/noticia/abiertas-las-convocatorias-para-participar-en-interseccion", element: <NoticiaIndividualPage noticia={<OpenCallNoticia />} /> },
+
+      {path: "/info/quienes-somos", element: pages.quenSomosPage},
+      {path: "/info/sostenibilidad", element: pages.sostenibilidadPage}
+
       /*       { path: "noticias", element: pages.noticiasPage } */
     ],
   },
-  { path: "/noticia/interseccion-echoes-viaja-a-costa-rica", element: <NoticiaIndividualPage noticia={<InterseccionEchoes2 />} /> },
-  { path: "/noticia/miradas-diversas-a-coruna", element: <NoticiaIndividualPage noticia={<MiradasDiversas2 />} /> },
-  { path: "/noticia/interseccion-echoes-viaja-a-medellin", element: <NoticiaIndividualPage noticia={<InterseccionMedellin />} /> },
-  { path: "/noticia/interseccion-colaborador-en-los-premios-goya", element: <NoticiaIndividualPage noticia={<PremiosGoya />} /> },
-  { path: "/noticia/interseccion-echoes-viaja-a-argentina", element: <NoticiaIndividualPage noticia={<InterseccionArgentina />} /> },
-  { path: "/noticia/comienza-miradas-diversas-a-coruna", element: <NoticiaIndividualPage noticia={<MiradasDiversas />} /> },
-  { path: "/noticia/interseccion-echoes-viaja-a-uruguay", element: <NoticiaIndividualPage noticia={<InterseccionEchoes />} /> },
-  { path: "/noticia/abiertas-las-convocatorias-para-participar-en-interseccion", element: <NoticiaIndividualPage noticia={<OpenCallNoticia />} /> },
-
+  
 ]);

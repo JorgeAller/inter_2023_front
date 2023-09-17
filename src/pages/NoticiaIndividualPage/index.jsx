@@ -8,7 +8,7 @@ export const NoticiaIndividualPage = ({ noticia }) => {
 
   return (
     <>
-      <div className="contenido">
+      <div >
         <div
           onClick={(event) => {
             navigate("/noticias");

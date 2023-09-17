@@ -75,6 +75,7 @@
 
 .buttonCancel:hover {
   scale: 1.2;
+  cursor: url("../../assets/images/faviconInterseccionBold.png") 20 20, auto
 }
 
 @media (max-height: 775px) {

@@ -1,30 +1,37 @@
 /* import { useState } from "react";
 import { useNavigate } from "react-router-dom";*/
+import { useDispatch } from "react-redux";
 import TituloBannerMove from "../../components/TituloBannerMove"; 
+import { setDesplegablesEchoes } from "../../redux/slices/configurationSlice";
+import { Box } from "@mui/material";
 
 export const EchoesPage = () => {
+
+  const dispatch = useDispatch();
+  dispatch(setDesplegablesEchoes(true));
   return (
-    <section className="contenido">
-      <div className={`contenedorTitulo `}>
+    <section >
+      <Box >
         <TituloBannerMove
           titulo={
-            <div
-            className="noticiaTitle"
-            style={{
-              color: "black",
-              cursor: "default",
-              WebkitTextStroke: "0px",
-            }}
+            <Box            
+              sx={{
+                color: "black",
+                cursor: "default",
+                fontWeight: 900,
+                fontSize: '180px',
+              }}
+            
             >
               ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES
               &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp;
               ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES &nbsp; ECHOES
               &nbsp; ECHOES &nbsp; ECHOES &nbsp;
-            </div>
+            </Box>
           }
           speed={60}
           ></TituloBannerMove>
-      </div>
+      </Box>
     </section>
   )
 };
@@ -84,12 +91,11 @@ export const EchoesPage = () => {
   // const [isExpanded10, setIsExpanded10] = useState(false);
 
   return (
-    <section className="contenido">
+    <section >
       <div className="bannerDiv">
         <TituloBannerMove
           titulo={
             <div
-              className="noticiaTitle"
               style={{
                 color: "black",
 

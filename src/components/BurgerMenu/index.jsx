@@ -8,8 +8,12 @@ import Modal from "../Modal/index.jsx";
 import { useIntl } from "react-intl";
 import { BotonesIdioma } from "../BotonesIdioma/BotonesIdioma";
 import { BASIC_URL } from "../../App";
+import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const BurgerMenu = () => {
+
+  const darkMode = useSelector((state) => state.configuration.darkMode)
 
   /* ###########################################################
   ############# DECLARACIONES DE TRADUCCIONES ##################
@@ -34,6 +38,8 @@ const BurgerMenu = () => {
   const [main, setMain] = useState(null);
 
   const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {setShowModal(false)}
 
   const [header, setHeader] = useState(null);
   const [mediaMobile, setMediaMobile] = useState(null);
@@ -71,7 +77,24 @@ const BurgerMenu = () => {
 
   return (
     <>
-      <div className={`burgerMenu ${showHeader ? "open" : "closed"}`}>
+      <Box className={`burgerMenu ${showHeader ? "open" : "closed"}`}
+       sx={{
+        mt: '10px',
+        fontSize: {
+          xs: '25px',
+          sm: '40px',
+        },
+        fontWeight: 900,
+        textTransform: 'uppercase',
+        WebkitTextStroke: {
+          xs: darkMode ? '1px white' : '1px black',
+          sm: darkMode ? '2px white' : '2px black'
+        },
+        color: 'transparent',
+        textAlign: 'center',
+        zIndex: 400
+       }}
+      >
         <div
           onClick={(e) => {
             e.preventDefault();
@@ -108,7 +131,8 @@ const BurgerMenu = () => {
         >
           {burgerMenuCosas}
         </div>
-      </div>
+      </Box>
+      
       {showModal && (
         <Modal setShowModal={setShowModal}>
           <div className="burgerMenuOpen">
@@ -118,18 +142,21 @@ const BurgerMenu = () => {
             </div>
             <ul className="listaContenido">
               <li>
-                <a href={`${BASIC_URL}/open-call`}>OPEN CALL</a>{" "}
-                {/*PALMARÉS*/}
+                <Link to={'/open-call'} onClick={()=>closeModal()} style={{textTransform: "uppercase"}}>OPEN CALL</Link>
               </li>
               <li>
-                <a href={`${BASIC_URL}/open-call-lab`}>
+                <Link to={'/open-call-lab'} onClick={()=>closeModal()} style={{textTransform: "uppercase"}} >
                   OPEN CALL LAB
-                </a>{" "}
-                {/*PALMARÉS*/}
+                </Link>{" "}
               </li>
               <li>
-                <a href={`${BASIC_URL}/noticias`}>{noticias}</a>{" "}
-                {/*PALMARÉS*/}
+                <Link to={'/noticias'} onClick={()=>closeModal()} style={{textTransform: "uppercase"}} >{noticias}</Link>
+              </li>
+              <li>
+                <Link to={'/info/quienes-somos'} onClick={()=>closeModal()} style={{textTransform: "uppercase"}} >{intl.formatMessage({id:"quenSomos-titulo"})}</Link>{" "}
+              </li>
+              <li>
+                <Link to={'/info/sostenibilidad'} onClick={()=>closeModal()} style={{textTransform: "uppercase"}} >{intl.formatMessage({id:"sostenibilidad-titulo"})}</Link>{" "}
               </li>
               {/* <li>
                 <a>PRÓXIMAMENTE</a>

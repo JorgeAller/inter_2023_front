@@ -1,6 +1,6 @@
 {
   "--------------------------HEADER ESP---------------------------": "",
-  "fecha": "OCTUBRE ",
+  "fecha": "17-22 OCT ",
   "lugar": "ESPAÑA",
   "noticias": "NOTICIAS",
   "programa": "PROGRAMA",
@@ -8,5 +8,15 @@
   "------------------------ BURGER MENU --------------------------": "",
   "burgerMenuMas": "MÁS",
   "burgerMenuMenos": "MENOS",
-  "burgerMenuCosas": "COSAS"
+  "burgerMenuCosas": "COSAS",
+
+  "------------------------ QUEN SOMOS --------------------------": "",
+  "quenSomos-titulo": "QUIÉNES SOMOS",
+  "quenSomos-descripcion": "QUÉ ES INTERSECCIÓN?",
+  "quenSomos-texto": "INTERSECCIÓN – Festival de Arte Audiovisual Contemporáneo focaliza su programación en obras que se encuentran en el cruce del arte contemporáneo y el cine de vanguardia, abarcando una gran variedad de formatos, técnicas y lenguajes.\n\n\nAdemás de las proyecciones, exposiciones y performances, INTERSECCIÓN se completa con actividades de apoyo a la creación, formación y de diálogo con diversos públicos.\n\n\nNuestra programación está compuesta por secciones competitivas y no competitivas, entre las que se encuentran focos a artistas destacadas. La procedencia de todas ellas es internacional en su conjunto, pero prestamos atención a cinematografías próximas como son la de Portugal, la de comunidades españolas o, especialmente, la gallega, que cuenta con sección propia en cada edición.\n\n\nPor el festival han pasado artistas como Antoni Muntadas, Salomé Lamas, Igor Grubič, Dora García, Catarina Vasconcelos o Tatiana Macedo y en él se han proyectado obras de artistas internacionales como J.P. Sniadecki o Kevin Jerome Everson, así como españolas como Manuel Saiz, Carla Andrade, Félix Fernández, Ignacio Pardo, Carme Nogueira, Rodríguez-Méndez o Alberte Pagán.\n\n\nAdemás del propio festival y todo lo que sucede durante el mismo, bajo la marca INTERSECCIÓN desarrollamos acciones extendidas en el tiempo y el espacio, en colaboración con instituciones nacionales e internacionales: exposiciones, programas online, actividades en ámbito rural y actividades de creación artística inclusiva.",
+
+  "------------------------ SOSTENIBILIDAD --------------------------": "",
+  "sostenibilidad-titulo": "SOSTENIBILIDAD",
+  "sostenibilidad-texto": "INTERSECCIÓN – The Contemporary Audiovisual Art Festival focuses its programme on works at the crossroads of contemporary art and avant-garde cinema, covering a wide variety of formats, techniques and languages.\n\n\n\nIn addition to screenings, exhibitions and performances, INTERSECCIÓN is complemented by activities to support creation, training and dialogue with different audiences.\n\n\n\nOur programme is made up of competitive and non-competitive sections, among which there is a focus on outstanding artists. The origin of all of them is international as a whole, but we pay special attention to neighbouring cinematographies such as those of Portugal, Spanish autonomous communities or, especially, Galicia, which has its own section in each edition.\n\n\n\nArtists such as Antoni Muntadas, Salomé Lamas, Igor Grubič, Dora García, Catarina Vasconcelos or Tatiana Macedo have participated in the festival, which has screened works by international artists such as J.P. Sniadecki and Kevin Jerome Everson, as well as Spanish artists such as Manuel Saiz, Carla Andrade, Félix Fernández, Ignacio Pardo, Carme Nogueira, Rodríguez-Méndez and Alberte Pagán.\n\n\n\nIn addition to the festival itself and everything that happens during it, under the INTERSECCIÓN brand we develop actions extended in time and space, in collaboration with national and international institutions: exhibitions, online programmes, activities in rural areas and inclusive artistic creation activities."
+
 }

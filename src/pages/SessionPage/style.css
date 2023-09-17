@@ -1,4 +1,4 @@
-.secciones {
+.sesiones {
   flex: 1;
 
   display: grid;
@@ -8,6 +8,15 @@
   padding: 8px 30px;
 
   width: 100%;
+}
+
+.seccionDescripcion {
+  -webkit-text-stroke: 0px;
+  font-weight: 900;
+  font-size: 40px;
+  /* color: rgb(31, 138, 75); */
+  -webkit-text-stroke: 3px black;
+  color: transparent;
 }
 
 .generalSesion {
@@ -21,23 +30,34 @@
   color: white;
 }
 
-.tituloSesion{
+/* .tituloSesion{
   font-size: 25px;
   font-weight: 900;
   margin-top: 5px;
   margin-left: 10px;
   color: white;
   text-decoration: none;
+} */
+
+.tituloGrandeSesion {
+  width: 100%;
+  position: absolute;
+  font-size: 70px;
+  line-height: 1.6;
+  top: -5px;
+  left: 10px;
+  color: white;
+  text-shadow: 6px 6px 15px black;
 }
 
 
-.informaciónSesion{
+.informacionSesionSinTitulo{
   display: flex;
   flex-direction: row;
   gap: 50px;
+  align-items: center;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 5px;
   margin-left: 10px;
 
 }
@@ -81,11 +101,3 @@
 
 
 
-@media (max-width: 1850px) {
-
-  .secciones {
-    padding-top: 44px;
-    grid-template-columns: repeat(auto-fit, 600px);
-    gap: 30px;
-  }
-}
