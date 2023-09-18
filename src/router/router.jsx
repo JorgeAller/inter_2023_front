@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "noticias", element: pages.noticiasPage },
       { path: "programa", element: pages.programaPage },
-      { path: "section", element: pages.sectionPage },
+      { path: "section/:idSection", element: pages.sectionPage },
       { path: "sesion", element: pages.sessionPage },
       { path: "echoes", element: pages.echoesPage },
       { path: "people", element: pages.peoplePage },

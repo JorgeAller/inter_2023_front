@@ -2,7 +2,7 @@ import TituloBannerMove from "../../components/TituloBannerMove";
 import { BASE_URL_BBDD, BASIC_URL } from "../../App";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useGetSectionsQuery,
@@ -15,17 +15,9 @@ export const ProgramaPage = () => {
   const selectedColor = useSelector((state) => state.configuration.color);
 
   const dispatch = useDispatch();
-  dispatch(setDesplegablesPrograma(true));
-
-
-  const { id: idSection } = useParams();
-  const navigate = useNavigate();
 
   const { data, isLoading } = useGetSectionsQuery({}, {});
 
-  const [activeSection, setActiveSection] = useState(null);
-
-  // Nuevo estado para rastrear la imagen activa de cada sección
   const [activeImages, setActiveImages] = useState({});   
 
   !isLoading && console.log(data);
@@ -43,6 +35,9 @@ export const ProgramaPage = () => {
     const {isLoading: isLoadingFilms, data: dataFilms} = useGetFilms(); */
 
     const darkMode = useSelector((state) => state.configuration.darkMode);
+
+    const isScreenSizeXSorSM = useMediaQuery(useTheme().breakpoints.down('md'))
+    const isScreenSizeXS = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   return (
     <>
@@ -74,17 +69,17 @@ export const ProgramaPage = () => {
             </Box>
         </section>
 
-        <Grid container spacing={5} className="secciones" sx={{pt: 5, pl: 10, width: '100%', justifyContent: 'start'}}>
+        <Grid container spacing={4} className="secciones" sx={{pt: 7, pl: {xs: 3, md: 10}, pb: 10, width: '100%', justifyContent: 'start'}}>
                 {isLoading 
                     ? <Typography>Hola</Typography>
                     : (data?.data?.sections?.sections?.map((section) => (
-                        <Grid item  xs={12} md={6} xl={4} sx={{minWidth: '700px', width: '100%'}}>
+                        <Grid item key={section.id} xs={12} md={6} xl={4} sx={{minWidth: {xs: '300px', md: '700px'}, width: '100%'}}>
                             <Grid
                                 sx={{ width: '100%' }}
                                 component={Link}
-                                to={`/section`}
+                                to={`/section/${section.id}`}
                             >
-                                <Box sx={{ width: '100%', height: '250px', overflow: 'hidden', position: 'relative',borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
+                                <Box sx={{ width: '100%', height: {xs: '200px', md: '250px'}, overflow: 'hidden', position: 'relative',borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
                                     <img
                                         style={{ 
                                             width: '100%', 
@@ -104,7 +99,10 @@ export const ProgramaPage = () => {
                                             pl: 2,
                                             width: '100%',
                                             overflowWrap: 'break-word', 
-                                            fontSize: '70px',
+                                            fontSize: {
+                                                xs: '50px',
+                                                md: '70px'
+                                            },
                                             fontWeight: '900',
                                             color: 'white',
                                             lineHeight: 1.6,
@@ -116,15 +114,15 @@ export const ProgramaPage = () => {
                                     </Box>
                                 </Box>
                                 
-                                </Grid>
+                            </Grid>
                         
                         {
                             section.sessions.map((sesion) => (
                                 <Box
+                                    key={sesion.id}
                                     sx={{ 
                                         fontWeight: '300',
                                         fontSize: '15px',
-                                      
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
                                         cursor: 'url("./images/faviconInterseccionBold.png") 20 20, auto',
@@ -160,7 +158,7 @@ export const ProgramaPage = () => {
                                     >
                                         <Box
                                             component={Link}
-                                            to={`/sesion`} /* /${sesion.id} */
+                                            to={`/sesion/${sesion.id}`} /* /${sesion.id} */
                                             sx={{ 
                                                 textDecoration: "none", 
                                                 fontSize: '25px',
@@ -175,8 +173,11 @@ export const ProgramaPage = () => {
                                             container 
                                             sx={{
                                                 display: 'flex',
-                                                justifyContent: 'start',
-                                                fontSize: '16px',
+                                                justifyContent: 'space-between',
+                                                fontSize: {
+                                                    xs: '13px',
+                                                    md: '16px'
+                                                },
                                                 height: '16px',
                                                 fontWeight: '600',
                                                 mt: 0.5,
@@ -184,19 +185,20 @@ export const ProgramaPage = () => {
                                                 
                                             }}
                                         >
-                                            <Grid item xs={3.5}> {sesion.weekDay}&nbsp;&nbsp; {new Date(sesion.date).getDate()} </Grid>
-                                            <Grid item xs={2}>{sesion.hour.slice(0, -3)}</Grid>
-                                            <Grid item xs={5.5} sx={{display: 'flex', flexDirection: 'row', alignSelf: 'start'}}>
-                                                <LocationOn sx={{position: 'relative', bottom:'8px', mr: 1}}/>
-                                                {sesion.place}
+                                            <Grid item xs={5} sm={5} md={4}> { sesion.weekDay}&nbsp;&nbsp; {new Date(sesion.date).getDate()} </Grid>
+                                            <Grid item xs={2} md={2}>{sesion.hour.slice(0, -3)}</Grid>
+                                            <Grid item xs={3.5} md={4.5} sx={{display: 'flex', flexDirection: 'row', alignSelf: 'start', }}>
+                                                {!isScreenSizeXSorSM && <LocationOn sx={{position: 'relative', bottom:'5px',  mr: 1}}/>}
+                                                {<p style={{whiteSpace: 'nowrap', overflow: 'hidden'}}> {sesion.place}</p>}
                                             </Grid>
-                                            <Grid item xs={1} sx={{textAlign:'end'}}>{sesion.duration}'</Grid>
+                                            <Grid item xs={1.5} md={1} sx={{textAlign:'end'}}>{sesion.duration}'</Grid>
                                         </Grid>
                                     </Box>
 
                                     {
                                         sesion?.films?.map((film) => (
                                             <Grid container 
+                                                key={film.id}
                                                 sx={{ color: darkMode ? 'black' : 'white', backgroundColor: darkMode ? 'white' : 'black', px: 2, py: 1, borderBottom: darkMode ? '1px solid black' : '1px solid white', fontSize: 14}} 
                                                 onMouseOver={() => {
                                                 // Actualizamos activeImages solo para esta sección
@@ -213,10 +215,10 @@ export const ProgramaPage = () => {
                                                     }));
                                                 }}
                                             >
-                                                <Grid item xs={7} sx={{fontWeight: '600', pr: 2}}>{film.title}</Grid>
-                                                <Grid item xs={3} sx={{pr: 1}}>{film.director}</Grid>
-                                                <Grid item xs={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.year}</Grid>
-                                                <Grid item xs={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.duration}'</Grid>
+                                                <Grid item xs={6} sm={7} sx={{fontWeight: '600', pr: 2}}>{film.title}</Grid>
+                                                <Grid item xs={3} sm={3} sx={{pr: 1}}>{film.director}</Grid>
+                                                <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.year}</Grid>
+                                                <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.duration}'</Grid>
                                             </Grid>
                                         ))
                                     }

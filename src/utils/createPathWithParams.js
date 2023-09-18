@@ -3,7 +3,7 @@ export const createPathWithParams = ({path, params}) => {
         return path
     }
     else {
-        const searchParams = URLSearchParams(params).toString();
-        return `${path}:${searhcParams}`
+        const searchParams = params.idSection || '';
+        return `${path}${searchParams}`
     }
 };

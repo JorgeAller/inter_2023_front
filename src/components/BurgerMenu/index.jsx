@@ -82,17 +82,21 @@ const BurgerMenu = () => {
         mt: '10px',
         fontSize: {
           xs: '25px',
-          sm: '40px',
+          md: '40px',
         },
         fontWeight: 900,
         textTransform: 'uppercase',
         WebkitTextStroke: {
           xs: darkMode ? '1px white' : '1px black',
-          sm: darkMode ? '2px white' : '2px black'
+          md: darkMode ? '2px white' : '2px black'
         },
         color: 'transparent',
         textAlign: 'center',
-        zIndex: 400
+        zIndex: 400,
+        '&:hover': {
+            color: darkMode ? 'white' : 'black',
+            WebkitTextStroke: '0px',
+        }
        }}
       >
         <div

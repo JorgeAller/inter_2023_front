@@ -13,7 +13,7 @@ const Footer = () => {
         color: 'white', 
         mt: 'auto',
         ml: {
-          lg: '328px'
+          md: '328px'
         },
         display: 'flex',
         flexDirection: 'row',

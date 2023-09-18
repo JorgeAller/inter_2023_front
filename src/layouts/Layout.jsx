@@ -13,7 +13,7 @@ const Layout = () => {
   const theme = useTheme()
   const isScreenSizeXSorSM = useMediaQuery(theme.breakpoints.down('md'))
 
-  const {darkMode} = useSelector((state)=>state.configuration);
+  const {darkMode, color: selectedColor} = useSelector((state)=>state.configuration);
 
   const cursor = "../"
 
@@ -28,7 +28,11 @@ const Layout = () => {
           justifyContent: 'space-between',
           px: 3,
           marginLeft: {md: '330px'},
-          backgroundColor: darkMode ? "black" : 'white',
+          backgroundColor: {
+            xs: selectedColor,
+            md: darkMode ? "black" : 'white',
+          }
+          
         }}
       >
         {isScreenSizeXSorSM

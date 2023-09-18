@@ -10,173 +10,319 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useDispatch, useSelector } from "react-redux";
 import { setDesplegablesEchoes, setDesplegablesNoticias, setDesplegablesPrograma } from "../../redux/slices/configurationSlice";
+import { Box, List } from "@mui/material";
+import { useGetSectionsQuery } from "../../services/api";
 
 const DesplegablesHeader = () => {
-  /* ###########################################################
-############# DECLARACIONES DE TRADUCCIONES ##################
-############################################################## */
-  const intl = useIntl();
-  const noticias = intl.formatMessage({ id: "noticias" });
-  const programa = intl.formatMessage({ id: "programa" });
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-  /* ############################################################
-############# FIN DELCARACIONES DE TRADUCCIONES ###############
-############################################################### */
+    /* ###########################################################
+    ############# DECLARACIONES DE TRADUCCIONES ##################
+    ############################################################## */
+    const intl = useIntl();
+    const noticias = intl.formatMessage({ id: "noticias" });
+    const programa = intl.formatMessage({ id: "programa" });
 
-  const desplegablePrograma = useSelector((state)=>state.configuration.desplegables.programa);
-  const desplegableEchoes = useSelector((state)=>state.configuration.desplegables.echoes);
-  const desplegableNoticias = useSelector((state)=>state.configuration.desplegables.noticias);
-  console.log({desplegablePrograma});
-  console.log({desplegableEchoes});
-  console.log({desplegableNoticias});
+    /* ############################################################
+    ############# FIN DELCARACIONES DE TRADUCCIONES ###############
+    ############################################################### */
 
-  const dispatch = useDispatch();
-  
+    const desplegablePrograma = useSelector((state)=>state.configuration.desplegables.programa);
+    const desplegableEchoes = useSelector((state)=>state.configuration.desplegables.echoes);
+    const desplegableNoticias = useSelector((state)=>state.configuration.desplegables.noticias);
 
-  return (
-    <nav className="menuDesplegablesHeader">
-      <ul className="menuSecciones">
-      <li className="programa">
-          <div
-            className="expandir-icono"
-            onClick={() => {
-              dispatch(setDesplegablesPrograma(!desplegablePrograma))
-            }}
-          >
-            <Link to='/programa'>{programa} </Link>
-            {desplegablePrograma ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px', mr:-1, ml:-0.5, '&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px", mb:'3.5px', mr: -1, ml:-0.5 }} />} 
-          </div>
 
-          <ul
-            className={`listaSecciones ${
-              desplegablePrograma ? "" : "oculto"
-            }`}
-          >
-            <li className="tipoSecciones">
-              <a>SECCIONES COMPETITIVAS</a>
-              <ul className="listaSecciones">
-                <li>
-                  <Link>internacional</Link>
-                </li>
-                <li>
-                  <Link>galicia</Link>
-                </li>
-                <li>
-                  <Link>escolas</Link>
-                </li>
-              </ul>
-            </li>
-            <li className="tipoSecciones">
-              <Link>SECCIONES NO COMPETITIVAS </Link>
-              <ul className="listaSecciones">
-                <li>
-                  <Link>Una caida, una polla</Link>
-                </li>
-                <li>
-                  <Link>Gonzalo y amigos</Link>
-                </li>
-                <li>
-                  <Link>David Fidalgo despues de 7 años intentandolo</Link>
-                </li>
-                <li>
-                  <Link>Sección que nadie verña</Link>
-                </li>
-                <li>
-                  <Link>VR</Link>
-                </li>
-                <li>
-                  <Link>Bocata calamares</Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+    /* ############################################################
+    ######################## SECCIONES  ##############################
+    ############################################################### */
+    const { data: dataSection, isLoading: isLoadingSection } = useGetSectionsQuery({},{})
 
-        <li className="programa ">
-          <div
-            className="expandir-icono"
-            onClick={() => {
-              dispatch(setDesplegablesNoticias(!desplegableNoticias))
-              
-            }}
-          >
-            <Link to='/noticias'>{noticias} </Link>
-            {desplegableNoticias ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px',mr: -1,ml: -0.5, '&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px" , mb:'3.5px', mr:-1, ml: -0.5}} />} 
-          </div>
-          <ul
-            className={`listaSecciones ${
-              desplegableNoticias ? "" : "oculto"
-            }`}
-          >
-            <li>
-              <Link to="/noticia/interseccion-echoes-viaja-a-costa-rica">
-                INTERSECCION ECHOES viaxa a <br></br> Costa Rica{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/miradas-diversas-a-coruna">
-                Miradas Diversas A Coruña{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/interseccion-echoes-viaja-a-medellin">
-                INTERSECCION ECHOES viaxa a Medellín{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/interseccion-colaborador-en-los-premios-goya">
-                INTERSECCIÓN, colaborador nos Premios Goya
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/interseccion-echoes-viaja-a-argentina">
-                INTERSECCION ECHOES viaxa a Arxentina{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/comienza-miradas-diversas-a-coruna">
-                Comeza Miradas Diversas A Coruña{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/abiertas-las-convocatorias-para-participar-en-interseccion">
-                Abertas as convocatorias para participar en INTERSECCIÓN{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/noticia/interseccion-echoes-viaja-a-uruguay">
-                {" "}
-                INTERSECCIÓN ECHOES viaxa a Uruguay
-              </Link>
-            </li>
-            {/*<li>
-            <a>Viva la seoane </a>
-        </li>
-        <li>
-            <a>Corte final </a>
-        </li> */}
-          </ul>
-        </li>
+    !isLoadingSection && console.log(dataSection);
+    return (
+        <Box sx={{ display:'flex' , flexDirection: 'column'}}>
+            
+           { /* -------------------------------------------------------------------------- */
+            /*                                  PROGRAMA                                  */
+            /* -------------------------------------------------------------------------- */}
 
-        <li className="programa ">
-          <div 
-            className="expandir-icono"
-            onClick={() => {
-              dispatch(setDesplegablesEchoes(!desplegableEchoes))
-            }}
-          >
-            <Link style={{marginTop:'2px'}} to="/echoes">ECHOES</Link>
-          {desplegableEchoes ? <ExpandLessIcon sx={{ fontSize: "40px", mb:'3.5px', mr: -1, ml: -0.5,'&:hover':{fontWeight:'bold'}}}/> : <ExpandMoreIcon sx={{ fontSize: "40px" ,mb:'3.5px', mr: -1, ml: -0.5}} />} 
-          </div>
-        </li>
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%'}}>
+                <Box
+                    className="expandir-icono"
+                    onClick={() => {
+                        dispatch(setDesplegablesPrograma(!desplegablePrograma))
+                    }}
+                    sx={{
+                        fontSize: '25px',
+                        fontWeight: 900,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        mr:-1
+                    }}
+                >
+                    <Box component={Link} to='/programa' sx={{textDecoration:'none', color: 'inherit'}}>{programa} </Box>
+                    {desplegablePrograma 
+                        ? <ExpandLessIcon sx={{ fontSize: "40px", mt: 0.2,'&:hover':{fontWeight:'bold'}}}/> 
+                        : <ExpandMoreIcon sx={{ fontSize: "40px", mt: 0.2 }} />
+                    } 
+                </Box>
 
-        <li className="programa " style={{height: '40px'}}>
-          <Link to="/open-call">OPEN CALL</Link>
-        </li>
+                {/* BLOQUE SECCIONES PROGRAMA*/}
+                <Box
+                    sx={{
+                        display: desplegablePrograma ? 'flex' : 'none', 
+                        flexDirection: 'column', 
+                        alignItems: 'end',
+                        mb: 1
+                    }}
+                > 
 
-        <li className="programa  " style={{height: '40px'}}>
-          <Link to="/open-call-lab">OPEN CALL LAB</Link>
-        </li>
+                    {/* -------------------------------------------------------------------------- */
+                    /*                           SECCIONES COMPETITIVAS                           */
+                    /* -------------------------------------------------------------------------- */}
+
+                    <Box sx={{mt:1}}>
+                        <Box 
+                            component={Link} 
+                            to={'/'}
+                            sx={{mb: 0.75, mt: 1, fontWeight: 700, textDecoration: 'none', color: 'inherit', display: 'flex', justifyContent: 'end'}}
+                        >
+                            SECCIONES COMPETITIVAS
+                        </Box>
+                        <Box sx={{textAlign: 'end', display: 'flex', flexDirection:'column', alignItems:'end', textDecoration: 'none', color: 'inherit'}}>
+                            {!isLoadingSection &&
+                                dataSection.data.sections.sections.filter(section => section.type === 'COMPETITIVA').map((section)=> (
+                                    <Box 
+                                        key={section.id}
+                                        component={Link} 
+                                        to={`/section/${section.id}`} 
+                                        sx={{my: 0.5, textDecoration: 'none', color: 'inherit', '&:hover':{fontWeight: 700, color: "white"}}}
+                                    >
+                                        {section.title}
+                                    </Box>
+                                ))
+                            }
+                           
+                        </Box>
+                    </Box>
+
+                    {/* -------------------------------------------------------------------------- */
+                    /*                          SECCIONES NO COMPETITIVAS                         */
+                    /* -------------------------------------------------------------------------- */}
+
+                    <Box sx={{mt:1}}>
+                        <Box 
+                            component={Link} 
+                            to={'/'}
+                            sx={{mb: 0.75, mt: 1, fontWeight: 700,textDecoration: 'none', color: 'inherit', display: 'flex', justifyContent: 'end'}}
+                        >
+                            SECCIONES NO COMPETITIVAS
+                        </Box>
+                        <Box sx={{display: 'flex', flexDirection:'column', alignItems:'end', textDecoration: 'none', color: 'inherit'}}>
+                            {!isLoadingSection &&
+                                dataSection.data.sections.sections.filter(section => section.type !== 'COMPETITIVA').map((section)=> (
+                                    <Box 
+                                        key={section.id}
+                                        component={Link} 
+                                        to={`/section/${section.id}`} 
+                                        sx={{my: 0.5, textDecoration: 'none', color: 'inherit', '&:hover':{fontWeight: 700, color: "white"}}}
+                                    >
+                                        {section.title}
+                                    </Box>
+                                ))
+                            }
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
+            
+            {/* -------------------------------------------------------------------------- */
+            /*                                  NOTICIAS                                  */
+            /* -------------------------------------------------------------------------- */}
+            
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%', mt: 1}}>
+                <Box
+                    className="expandir-icono"
+                    onClick={() => {
+                        dispatch(setDesplegablesNoticias(!desplegableNoticias))
+                    }}
+                    sx={{
+                        fontSize: '25px',
+                        fontWeight: 900,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        mr:-1
+                    }}
+                >
+                    <Box component={Link} to='/noticias' sx={{textDecoration:'none', color: 'inherit'}}>{noticias} </Box>
+                    {desplegableNoticias 
+                        ? <ExpandLessIcon sx={{ fontSize: "40px", mt: 0.2, '&:hover':{fontWeight:'bold'}}}/> 
+                        : <ExpandMoreIcon sx={{ fontSize: "40px", mt: 0.2 }} />
+                    } 
+                </Box>
+                <Box
+                    sx={{
+                        display: desplegableNoticias ? 'flex' : 'none', 
+                        flexDirection: 'column', 
+                        alignItems: 'end',
+                    }}
+                >
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/interseccion-echoes-viaja-a-costa-rica" 
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        INTERSECCION ECHOES viaxa a <br></br> Costa Rica{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/miradas-diversas-a-coruna"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        Miradas Diversas A Coruña{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/interseccion-echoes-viaja-a-medellin"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        INTERSECCION ECHOES viaxa a Medellín{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/interseccion-colaborador-en-los-premios-goya"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        INTERSECCIÓN, colaborador nos Premios Goya
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/interseccion-echoes-viaja-a-argentina"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        INTERSECCION ECHOES viaxa a Arxentina{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/comienza-miradas-diversas-a-coruna"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        Comeza Miradas Diversas A Coruña{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/abiertas-las-convocatorias-para-participar-en-interseccion"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        Abertas as convocatorias para participar en INTERSECCIÓN{" "}
+                    </Box>
+                    
+                    
+                    <Box 
+                        component={Link}
+                        to="/noticia/interseccion-echoes-viaja-a-uruguay"
+                        sx={{textAlign: 'end', my: 0.7, textDecoration: 'none', color: 'inherit', '&:hover': {fontWeight: 700, color:"white"}}}
+                    >
+                        {" "}
+                        INTERSECCIÓN ECHOES viaxa a Uruguay
+                    </Box>
+                    
+                </Box>
+            </Box>
+
+            {/* -------------------------------------------------------------------------- */
+            /*                                  ECHOES                                     */
+            /* -------------------------------------------------------------------------- */}
+
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%', mt: 1}}>
+                <Box 
+                    className="expandir-icono"
+                    onClick={() => {
+                        dispatch(setDesplegablesEchoes(!desplegableEchoes))
+                    }}
+                    sx={{
+                        fontSize: '25px',
+                        fontWeight: 900,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        mr:-1
+                    }}
+                >
+                    <Box 
+                        component={Link} 
+                        to="/echoes" 
+                        sx={{textDecoration:'none', color: 'inherit', '&:hover':{fontWeight: 900, color: "white"}}}
+                    >
+                        ECHOES
+                    </Box>
+                    {desplegableEchoes 
+                        ? <ExpandLessIcon sx={{ fontSize: "40px", mt: 0.2,'&:hover':{fontWeight:'bold'}}}/> 
+                        : <ExpandMoreIcon sx={{ fontSize: "40px", mt: 0.2 }} />} 
+                </Box>
+            </Box>
+            
+            {/* -------------------------------------------------------------------------- */
+            /*                                  OPEN CALL                                  */
+            /* -------------------------------------------------------------------------- */}
+
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%', mt: 1}}>
+                <Box 
+                    component={Link} 
+                    to="/open-call"
+                    sx={{
+                        fontSize: '25px',
+                        fontWeight: 900,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        '&:hover':{fontWeight: 900, color: "white"}
+                    }}
+                >
+                    OPEN CALL
+                </Box>
+            </Box>
+            
+            
+            {/* -------------------------------------------------------------------------- */
+            /*                                  OPEN CALL LAB                              */
+            /* -------------------------------------------------------------------------- */}
+
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%', mt: 1}}>
+                <Box 
+                    component={Link} 
+                    to="/open-call-lab"
+                    sx={{
+                        fontSize: '25px',
+                        fontWeight: 900,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        '&:hover':{fontWeight: 900, color: "white"}
+                    }}    
+                >
+                    OPEN CALL LAB
+                </Box>
+            </Box>
 
         
 
@@ -245,8 +391,7 @@ const DesplegablesHeader = () => {
         <a>AulaColectiva </a>
         </li>
     </ul>*/}
-      </ul>
-    </nav>
+      </Box>
   );
 };
 

@@ -23,7 +23,6 @@ const BackButton = () => {
   const darkMode = useSelector((state) => state.configuration.darkMode);
 
   return (
-    <div className="backButton">
         <Box
             onClick={() => {
                 navigate(-1);
@@ -31,16 +30,18 @@ const BackButton = () => {
             sx={{
                 fontSize: '40px',
                 fontWeight: 900,
-                textTransform: 'upeprcase',
+                textTransform: 'uppercase',
                 color: 'transparent',
                 lineHeight: 1.4,
-                WebkitTextStroke: darkMode ? '2px white' : '2px black'
+                WebkitTextStroke: darkMode ? '2px white' : '2px black',
+                '&:hover': {
+                    color: darkMode ? 'white' : 'black',
+                    WebkitTextStroke: '0px',
+                }
             }}
         >
           atrás
         </Box>
-      
-    </div>
   );
 };
 
