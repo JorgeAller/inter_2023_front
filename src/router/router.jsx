@@ -16,6 +16,7 @@ import { InterseccionEchoes } from "../components/Noticias/InterseccionEchoes";
 export const router = createBrowserRouter([
   // Rutas básicas
   { path: "/", element: pages.landing },
+  { path: "/*", element: pages.notFoundPage },
   {
     element: <Layout />,
     errorElement: <ErrorPage />,
@@ -23,9 +24,9 @@ export const router = createBrowserRouter([
       { path: "noticias", element: pages.noticiasPage },
       { path: "programa", element: pages.programaPage },
       { path: "section/:idSection", element: pages.sectionPage },
-      { path: "sesion", element: pages.sessionPage },
+      { path: "sesion/:idSession", element: pages.sessionPage },
       { path: "echoes", element: pages.echoesPage },
-      { path: "people", element: pages.peoplePage },
+      { path: "people/:idPeople", element: pages.peoplePage },
       { path: "/noticia/interseccion-echoes-viaja-a-costa-rica", element: <NoticiaIndividualPage noticia={<InterseccionEchoes2 />} /> },
       { path: "/noticia/miradas-diversas-a-coruna", element: <NoticiaIndividualPage noticia={<MiradasDiversas2 />} /> },
       { path: "/noticia/interseccion-echoes-viaja-a-medellin", element: <NoticiaIndividualPage noticia={<InterseccionMedellin />} /> },

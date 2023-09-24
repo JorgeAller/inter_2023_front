@@ -9,6 +9,7 @@ import { ProgramacionPage } from "./ProgramacionPage/ProgramacionPage";
 import { QuenSomosPage } from "./Info/QuenSomosPage/QuenSomosPage";
 import { SostenibilidadPage } from "./Info/SostenibilidadPage/SostenibilidadPage";
 import { PeoplePage } from "./PeoplePage/PeoplePage";
+import { NotFoundPage } from "./NotFoundPage/NotFoundPage";
 
 export const pages = {
   landing: <LandingPage />,
@@ -21,5 +22,6 @@ export const pages = {
   sessionPage: <SessionPage/>,
   quenSomosPage: <QuenSomosPage/>,
   sostenibilidadPage: <SostenibilidadPage/>,
-  peoplePage: <PeoplePage/>
+  peoplePage: <PeoplePage/>,
+  notFoundPage: <NotFoundPage/>
 };

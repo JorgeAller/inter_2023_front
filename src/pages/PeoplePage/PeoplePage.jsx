@@ -3,10 +3,18 @@ import { Box, Grid, IconButton, Paper, Typography } from "@mui/material";
 import { BASIC_URL } from "../../App";
 import { useSelector } from "react-redux";
 import TituloBannerMove from "../../components/TituloBannerMove";
+import { useGetPeopleQuery } from "../../services/api";
+import { useParams } from "react-router-dom";
 
 export const PeoplePage = () => {
+
+    const { idPeople } = useParams();
+
     const selectedColor = useSelector((state)=>state.configuration.color);
     const darkMode = useSelector((state)=>state.configuration.darkMode);
+
+
+    const { data: dataPeople, isLoading: isLoadingPeople} = useGetPeopleQuery({},{idPeople})
     return (
         <>
             <section >

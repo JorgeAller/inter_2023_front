@@ -29,21 +29,6 @@ header > img:hover {
   cursor: url("../../assets/images/faviconInterseccionBold.png") 20 20, auto;
 }
 
-header {
-  background-color: rgb(31, 138, 75);
-  width: 330px;
-  max-width: 330px;
-  height: 102%;
-  padding: 20px;
-  padding-bottom: 0;
-  padding-top: 15px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-
-  overflow-y: auto;
-  border-right: 2px solid black;
-}
 
 header img {
   width: 270px;
@@ -155,7 +140,7 @@ header img {
 
 .lineaMedioLugar {
   border-color: black;
-  width: calc(330px - 300px);
+  width: calc(330px - 292px);
   display: inline-block;
 
   margin: 7px 4px;
@@ -181,6 +166,16 @@ header img {
   }
 }
 
+
+@media (max-width: 900px) {
+  .lineaMedioFechaaa {
+    width: calc(100vw - 280px);
+  }
+
+  .lineaMedioLugar {
+    width: calc(100vw - 310px);
+  }
+}
 @media (max-width: 500px) {
   header {
     display: none;
@@ -208,11 +203,5 @@ header img {
     display: none;
   }
 
-  .lineaMedioFecha {
-    width: calc(100vw - 260px);
-  }
 
-  .lineaMedioLugar {
-    width: calc(100vw - 300px);
-  }
 }

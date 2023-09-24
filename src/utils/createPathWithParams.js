@@ -3,7 +3,7 @@ export const createPathWithParams = ({path, params}) => {
         return path
     }
     else {
-        const searchParams = params.idSection || '';
+        const searchParams = params.idSection || params.idSession || params.idFilm || params.idPeople || '';
         return `${path}${searchParams}`
     }
 };

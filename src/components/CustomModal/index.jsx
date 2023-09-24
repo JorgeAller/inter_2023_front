@@ -3,7 +3,7 @@ import "./style.css";
 import buttonCancel from "../../assets/images/buttonCancel.png";
 import { useState, useEffect } from "react";
 
-const Modal = ({ children, setShowModal }) => {
+const CustomModal = ({ children, setShowModal }) => {
   const [isOpen, setIsOpen] = useState(true);
   const burgerMenu = document.querySelector(".burgerMenu");
 
@@ -68,4 +68,4 @@ const Modal = ({ children, setShowModal }) => {
   );
 };
 
-export default Modal;
+export default CustomModal;

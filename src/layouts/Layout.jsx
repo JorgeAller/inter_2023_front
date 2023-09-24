@@ -15,52 +15,56 @@ const Layout = () => {
 
   const {darkMode, color: selectedColor} = useSelector((state)=>state.configuration);
 
-  const cursor = "../"
-
+  const backgroundImageUrl = "../images/fondo.png";
+  const backgroundImageUrlDarkMode = "../images/fondoBlack.jpg";
+  
   return (
     <>
-      { !isScreenSizeXSorSM && <SideBar />}
-      <Box 
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          px: 3,
-          marginLeft: {md: '330px'},
-          backgroundColor: {
-            xs: selectedColor,
-            md: darkMode ? "black" : 'white',
-          }
-          
-        }}
-      >
-        {isScreenSizeXSorSM
-          ? <LogoInterseccion />
-          : <BackButton />
+      { !isScreenSizeXSorSM && <SideBar width={'330px'} />}
+      
 
-        }
-        {!isScreenSizeXSorSM && <BotonesColores />}
-        <BurgerMenu />
-      </Box>
+        <Box
+            component="main"
+            sx={{
+            // backgroundColor: darkMode ? "black" : 'white',
+            backgroundImage: darkMode ? `url(${backgroundImageUrlDarkMode})` : `url(${backgroundImageUrl})`,
+            backgroundSize:'cover',
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center center",
+            display: "flex",
+            marginLeft: {
+                xs: 0,
+                md: '330px',
+            },
+            }}
+        >
+            <Box 
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                px: 3,
+                backgroundColor: {
+                xs: selectedColor,
+                md: 'transparent',
+                }
+            }}
+            >
+            {isScreenSizeXSorSM
+                ? <LogoInterseccion />
+                : <BackButton />
 
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: darkMode ? "black" : 'white',
-          display: "flex",
-          marginLeft: {
-            xs: 0,
-            md: '330px',
-          },
-        }}
-      >
-        <Box component="div">
-          <Outlet />
+            }
+            {!isScreenSizeXSorSM && <BotonesColores />}
+            <BurgerMenu />
+            </Box>
+            <Box component="div">
+            <Outlet />
+            </Box>
+
         </Box>
-
-      </Box>
-      <Footer />
+        <Footer />
     </>
   );
 };

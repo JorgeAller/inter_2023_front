@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import TituloBannerMove from '../../components/TituloBannerMove/index.jsx'
 import "./style.css"
-import { Grid, Box, Typography, useMediaQuery, useTheme, IconButton } from '@mui/material';
+import { Grid, Box, Typography, useMediaQuery, useTheme, IconButton, Button, Modal, Paper } from '@mui/material';
 import { BASE_URL_BBDD, BASIC_URL } from "../../App.jsx";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -11,7 +11,7 @@ import {
   useGetSectionsQuery,
   useGetSessionsByIdSectionQuery,
 } from "../../services/api.js";
-import { Add, LocationOn } from '@mui/icons-material';
+import { Add, LocationOn, Remove } from '@mui/icons-material';
 import { useEffect } from 'react';
 
 export const SectionPage = () => {
@@ -37,18 +37,18 @@ export const SectionPage = () => {
     }, [idSection]);
     const [activeImages, setActiveImages] = useState({});  
 
-    console.log(idSection);
-    !isLoadingSection && console.log(dataSection);
+    const [ isCurTextOpen, setIsCurTextOpen ] = useState(false)
 
-    const [expandedIndex, setExpandedIndex] = useState(null);
-
-    const handleOpenModal = (index) => {
-        setExpandedIndex(index);
+    const handleOpenModal = () => {
+        setIsCurTextOpen(true);
     };
   
     const handleCloseModal = () => {
-        setExpandedIndex(null);
+        setIsCurTextOpen(false);
     };
+
+    const sectionTitle = dataSection?.data?.section[0]?.title
+
     
   return (
     <>
@@ -57,7 +57,7 @@ export const SectionPage = () => {
             titulo={
               <Box
                 sx={{
-                  color: "black",
+                  color: darkMode ? 'white' : "black",
                   cursor: "default",
                   fontWeight: 900,
                   fontSize: {
@@ -68,22 +68,24 @@ export const SectionPage = () => {
                   }, 
                 }}
               >
-                {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp;
-                {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp;
-                {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp;
-                {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp; {dataSection?.data?.section[0]?.title}  &nbsp;
+                {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp;
+                {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp;
+                {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp;
+                {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp; {sectionTitle}  &nbsp;
               </Box>
             }
             speed={80}
             />
         </Box>
+
+        
         
         {isLoadingSection && isRefetchingSection
             ? <Typography> HOLA</Typography> 
             : dataSection?.data?.section?.map((section) => (
                 section.type === 'FOCO' && 
-                    <Box sx={{display:'flex', justifyContent:'center', p:{xs:5, md: 0}}}>
-                        <Grid container sx={{mx:{ md:10 },  mb: {xs: 3, sm: 0},  mt: 7, borderRadius: 5, bgcolor: selectedColor, border: '1px solid black', width: '100%'}}>
+                    <Box sx={{display:'flex', justifyContent:'center', px:{xs:3, md: 0}, }}>
+                        <Grid container sx={{mx:{ md:10 }, mt: {xs: 2, md: 8}, borderRadius: 5, bgcolor: selectedColor, border: darkMode ? '1px solid white' : '1px solid black', width: '100%'}}>
 
                             <Grid 
                                 sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
@@ -100,11 +102,11 @@ export const SectionPage = () => {
 
                                             <Typography variant='h4' sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', bgcolor: selectedColor, borderTopRightRadius:'20px',borderTopLeftRadius:'20px', color: 'white', lineHeight: '40px', fontSize: '24px', fontWeight: '900', pl: 3, border: '1px solid white'}}>
                                                 BIOGRAFÍA 
-                                                {section.bio?.length > 150 && (
-                                                    <IconButton sx={{color: 'white', fontSize: '24px', fontWeight: '24px'}} onClick={() => handleOpenModal(index)}>
+                                                
+                                                    <IconButton component={Link} to={`/people`} sx={{color: 'white', fontSize: '24px', fontWeight: '24px'}} >
                                                         <Add sx={{'&:hover': {fontWeight: 900}}}/>
                                                     </IconButton>
-                                                )}
+                                                
                                             </Typography>
 
                                             <Typography noWrap={true} sx={{ px: 3, pt: 1, pb: 2, mb:2 ,height: '110px', overflow: 'ellipsis', bgcolor: 'white',  borderBottomRightRadius:'20px', borderBottomLeftRadius:'20px',  textOverflow: 'ellipsis', whiteSpace: 'pre-line', display: '-webkit-box', WebkitLineClamp: 4,  WebkitBoxOrient: 'vertical' }}>
@@ -119,11 +121,11 @@ export const SectionPage = () => {
 
                                             <Typography variant='h4' sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', bgcolor: selectedColor, borderTopRightRadius:'20px',borderTopLeftRadius:'20px', color: 'white', lineHeight: '40px', fontSize: '24px', fontWeight: '900', pl: 3, border: '1px solid white'}}>
                                                 TEXTO CURATORIAL 
-                                                {section.cur_text?.length > 150 && (
-                                                    <IconButton sx={{color: 'white', fontSize: '24px', fontWeight: '24px'}} onClick={() => handleOpenModal(index)}>
+                                                {/* {section.cur_text?.length > 150 && ( */}
+                                                    <IconButton sx={{color: 'white', fontSize: '24px', fontWeight: '24px'}} onClick={() => handleOpenModal()}>
                                                         <Add sx={{'&:hover': {fontWeight: 900}}}/>
                                                     </IconButton>
-                                                )}
+                                                {/* )} */}
                                             </Typography>
 
                                             <Typography noWrap={true} sx={{ px: 3, pt: 1, pb: 2, mb:2 ,height: '110px', overflow: 'ellipsis', bgcolor: 'white',  borderBottomRightRadius:'20px', borderBottomLeftRadius:'20px',  textOverflow: 'ellipsis', whiteSpace: 'pre-line', display: '-webkit-box', WebkitLineClamp: 4,  WebkitBoxOrient: 'vertical' }}>
@@ -163,9 +165,8 @@ export const SectionPage = () => {
                             
                             </Grid>
 
-                            {expandedIndex !== null && (
                                 <Modal
-                                    open={expandedIndex !== null}
+                                    open={isCurTextOpen}
                                     onClose={handleCloseModal}
                                     sx={{
                                         display: "flex",
@@ -173,15 +174,15 @@ export const SectionPage = () => {
                                         justifyContent: "center",
                                     }}
                                 >
-                                    <Paper sx={{display: 'flex', flexDirection: 'column', width: '50%', borderRadius: '20px'}}>
-                                        <Typography variant="h4" sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between',bgcolor: selectedColor, color: 'white', fontWeight: '900',pl: 5, pr: 1, py: 1, borderTopRadiusLeft: '20px', borderTopLeftRadius: '20px'}}>
+                                    <Paper sx={{display: 'flex', flexDirection: 'column', width: '50%', }}>
+                                        <Typography variant="h4" sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between',bgcolor: selectedColor, color: 'white', fontWeight: '900',pl: 5, pr: 1, py: 1}}>
                                             TEXTO CURATORIAL
                                             <IconButton sx={{color: 'white', fontSize: '24px', fontWeight: '24px'}} onClick={() => handleCloseModal()}>
                                                 <Remove sx={{'&:hover': {fontWeight: 900}}}/>
                                             </IconButton>
                                         </Typography>
                                         <Typography sx={{ px: 5, pt: 2.5,  pb: 3}}>
-                                            {section[expandedIndex].cur_text}
+                                            {section.cur_text}
                                         </Typography>
                                         
                                         {/* <Button sx={{alignSelf: 'center', fontSize: '24px', color: selectedColor, my: 2, '&:hover': {cursor: 'url("./images/faviconInterseccionBold.png") 20 20, auto'}}} onClick={() => handleCloseModal()}>
@@ -189,23 +190,49 @@ export const SectionPage = () => {
                                         </Button> */}
                                     </Paper>
                                 </Modal>
-                            )}
+                            
                     
                         </Grid>
                     </Box>
             ))
         }
 
-
+            {isLoadingSessions 
+                ? <Typography>HOLA</Typography>
+                : <Box sx={{ ml: {xs: 3, md: 10}, mt: {xs: 4, md:8}, mb: 2, pb: 1, overflowX: 'auto' }}>
+                    <Box sx={{ display: 'flex', whiteSpace: 'nowrap' }}>
+                        { dataSessions?.data.sessions.map((session)=>(
+                            <Button 
+                            variant='contained' 
+                            size='large' 
+                            sx={{
+                                borderRadius: '15px', 
+                                px: 2, 
+                                mr: 2, 
+                                color: darkMode ? 'black' : 'white',
+                                backgroundColor: darkMode ? 'white' : 'black' , 
+                                '&:hover': { backgroundColor: selectedColor, color: darkMode ? 'black' :'white'},
+                                minWidth: 'fit-content', 
+                                whiteSpace: 'nowrap', 
+                                overflow: 'hidden', 
+                                textOverflow: 'ellipsis'
+                            }} 
+                            >
+                                {session.title}
+                            </Button>
+                        ))}
+                    </Box> 
+                </Box>
+            }
                 
             {isLoadingSessions && isLoadingFilms && isRefetchingFilms && isRefetchingSessions
                 ? <Typography>Hola</Typography>
-                : <Box sx={{display:'flex', justifyContent: {xs: 'center', md: 'start'}, mt: {md: 10}}}>
-                    <Grid container spacing={5} className="secciones" sx={{ pl: {md: 10}, pb: 10, width: '95%', justifyContent: 'start'}}>
+                : <Box sx={{ display:'flex', justifyContent: 'start', mt: {md: 2}, mx:{xs:3, md: 0},}}>
+                    <Grid container gap={5} sx={{ mx: {md: 10}, pb: 10, width: '100%', justifyContent: 'start'}}>
  
                         {dataSessions?.data?.sessions.map((session) => (
                             
-                            <Grid item  xs={12} md={6} xl={4} sx={{minWidth: {xs: '300px', md: '700px'}, width: '100%'}}>
+                            <Grid item  xs={12} lg={6} xl={4} sx={{minWidth: {xs: '300px', lg: '700px'}, width: '100%'}}>
 
                                 <Grid
                                     sx={{ width: '100%' }}

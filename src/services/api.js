@@ -26,17 +26,39 @@ export const useGetSectionQuery = (queryOptions, queryParams) =>
         retry: (failureCount, error) => retryFunction(failureCount, error)
     });
 
+
+
+
+
+
+
 export const useGetSessionsByIdSectionQuery = (queryOptions, queryParams) => 
     useQuery({
         ...queryOptions,
-        queryKey: ['/sessions'],
+        queryKey: ['/sessionsByIdSection'],
         queryFn: () => axiosPrivateInstance
             .get(createPathWithParams({path: `${BASE_URL_BBDD}/sessionsByIdSection/`, params: queryParams}))
             .then(unwrapAxiosResponse),
         retry: (failureCount, error) => retryFunction(failureCount, error)
     });
 
-    export const useGetFilmsQuery = (queryOptions, queryParams) => 
+export const useGetSessionQuery = (queryOptions, queryParams) => 
+    useQuery({
+        ...queryOptions,
+        queryKey: ['/sessionById'],
+        queryFn: () => axiosPrivateInstance
+            .get(createPathWithParams({path: `${BASE_URL_BBDD}/sessions/`, params: queryParams}))
+            .then(unwrapAxiosResponse),
+        retry: (failureCount, error) => retryFunction(failureCount, error)
+    });
+
+
+
+
+
+
+
+export const useGetFilmsQuery = (queryOptions, queryParams) => 
     useQuery({
         ...queryOptions,
         queryKey: ['/films/list'],
@@ -46,4 +68,25 @@ export const useGetSessionsByIdSectionQuery = (queryOptions, queryParams) =>
         retry: (failureCount, error) => retryFunction(failureCount, error)
     });
 
-  
+export const useGetFilmsByIdSessionQuery = (queryOptions, queryParams) => 
+    useQuery({
+        ...queryOptions,
+        queryKey: ['/films'],
+        queryFn: () => axiosPrivateInstance
+            .get(createPathWithParams({path: `${BASE_URL_BBDD}/filmsByIdSession/`, params: queryParams}))
+            .then(unwrapAxiosResponse),
+        retry: (failureCount, error) => retryFunction(failureCount, error)
+    });
+
+
+
+
+    export const useGetPeopleQuery = (queryOptions, queryParams) => 
+    useQuery({
+        ...queryOptions,
+        queryKey: ['/people'],
+        queryFn: () => axiosPrivateInstance
+            .get(createPathWithParams({path: `${BASE_URL_BBDD}/people/`, params: queryParams}))
+            .then(unwrapAxiosResponse),
+        retry: (failureCount, error) => retryFunction(failureCount, error)
+    });

@@ -13,15 +13,14 @@ export const BotonesColores = () => {
   };
 
   const darkMode = useSelector((state) => state.configuration.darkMode)
+  const selectedColor = useSelector((state) => state.configuration.color)
 
   const handleDarkMode = () => {
     dispatch(setDarkMode(!darkMode));
   };
 
 
-  const [selectedColor, setSelectedColor] = useState(
-    localStorage.getItem("selectedColor")
-  );
+
 
 
   return (

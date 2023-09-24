@@ -2,7 +2,7 @@ import TituloBannerMove from "../../components/TituloBannerMove";
 import { BASE_URL_BBDD, BASIC_URL } from "../../App";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useGetSectionsQuery,
@@ -69,142 +69,116 @@ export const ProgramaPage = () => {
             </Box>
         </section>
 
-        <Grid container spacing={4} className="secciones" sx={{pt: 7, pl: {xs: 3, md: 10}, pb: 10, width: '100%', justifyContent: 'start'}}>
+                
+                {isLoading 
+                    ? <Typography>HOLA</Typography>
+                    : <Box sx={{ ml: {xs: 3, md: 10}, mt: {xs: 4, md:8}, mb: 2,  pb: 1, overflowX: 'auto'}}>
+                        <Box sx={{ display: 'flex', whiteSpace: 'nowrap', }}>
+                            { data?.data?.sections?.sections?.map((section) => (
+                                <Button 
+                                    variant='contained' 
+                                    size='large' 
+                                    sx={{
+                                        borderRadius: '15px', 
+                                        px: 2, 
+                                        mr: 2, 
+                                        color: darkMode ? 'black' : 'white',
+                                        backgroundColor: darkMode ? 'white' : 'black' , 
+                                        '&:hover': { backgroundColor: selectedColor, color: darkMode ? 'black' :'white'},
+                                        minWidth: 'fit-content', 
+                                        whiteSpace: 'nowrap', 
+                                        overflow: 'hidden', 
+                                        textOverflow: 'ellipsis',
+                                        '::-webkit-scrollbar-thumb': {backgroundColor: 'red'}
+                                        
+                                    }} 
+                                >
+                                    {section.title}
+                                </Button>
+                            ))}
+                        </Box> 
+                    </Box>
+                }
+                
                 {isLoading 
                     ? <Typography>Hola</Typography>
-                    : (data?.data?.sections?.sections?.map((section) => (
-                        <Grid item key={section.id} xs={12} md={6} xl={4} sx={{minWidth: {xs: '300px', md: '700px'}, width: '100%'}}>
-                            <Grid
-                                sx={{ width: '100%' }}
-                                component={Link}
-                                to={`/section/${section.id}`}
-                            >
-                                <Box sx={{ width: '100%', height: {xs: '200px', md: '250px'}, overflow: 'hidden', position: 'relative',borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
-                                    <img
-                                        style={{ 
-                                            width: '100%', 
-                                            minHeight: '100%', 
-                                            objectFit: 'cover',   
-                                            WebkitFilter: 'grayscale(100%)',
-                                            filter: 'grayscale(100%) brightness(50%)' 
-                                        }}
-                                        src={activeImages[section.id] || `${BASE_URL_BBDD}/${section.image}`}
-                                        alt="foto de Noticia"
-                                    
-                                />
-                                    <Box
-                                        sx={{
-                                            position: 'absolute',
-                                            top: '-5px',
-                                            pl: 2,
-                                            width: '100%',
-                                            overflowWrap: 'break-word', 
-                                            fontSize: {
-                                                xs: '50px',
-                                                md: '70px'
-                                            },
-                                            fontWeight: '900',
-                                            color: 'white',
-                                            lineHeight: 1.6,
-                                            textShadow: '6px 6px 15px black',
-                                            "&:hover": { color: selectedColor }
-                                        }}
-                                    >
-                                        {section.title}
-                                    </Box>
-                                </Box>
-                                
-                            </Grid>
-                        
-                        {
-                            section.sessions.map((sesion) => (
-                                <Box
-                                    key={sesion.id}
-                                    sx={{ 
-                                        fontWeight: '300',
-                                        fontSize: '15px',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        cursor: 'url("./images/faviconInterseccionBold.png") 20 20, auto',
-                                        color: 'white',
-                                        backgroundColor: selectedColor,
-                                        borderBottom: darkMode ? '2px solid black' : '2px solid white' 
-                                    }}
-                                >
-                                    <Box
-                                        sx={{
-                                            fontSize: '25px',
-                                            fontWeight: '900',
-                                            my: 1,
-                                            mx: 2,
-                                            color: 'white',
-                                            textDecoration: 'none',
-                                            textTransform: 'uppercase'
-                                        }}
-                                        onMouseOver={() => {
-                                        // Actualizamos activeImages solo para esta sección
-                                            setActiveImages((prevActiveImages) => ({
-                                                ...prevActiveImages,
-                                                [section.id]: `${BASE_URL_BBDD}/${sesion.image}`,
-                                            }));
-                                        }}
-                                        onMouseLeave={() => {
-                                        // Restablecemos activeImages solo para esta sección cuando el ratón sale de la sesión
-                                            setActiveImages((prevActiveImages) => ({
-                                                ...prevActiveImages,
-                                                [section.id]: null,
-                                            }));
-                                        }}
-                                    >
-                                        <Box
-                                            component={Link}
-                                            to={`/sesion/${sesion.id}`} /* /${sesion.id} */
-                                            sx={{ 
-                                                textDecoration: "none", 
-                                                fontSize: '25px',
-                                                fontWeight: '900',
-                                                marginTop: '5px',
-                                                color: 'white',
-                                            }}
-                                        >
-                                            {sesion.title}
-                                        </Box>
-                                        <Grid 
-                                            container 
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                fontSize: {
-                                                    xs: '13px',
-                                                    md: '16px'
-                                                },
-                                                height: '16px',
-                                                fontWeight: '600',
-                                                mt: 0.5,
-                                                marginBottom: '6px',
-                                                
-                                            }}
-                                        >
-                                            <Grid item xs={5} sm={5} md={4}> { sesion.weekDay}&nbsp;&nbsp; {new Date(sesion.date).getDate()} </Grid>
-                                            <Grid item xs={2} md={2}>{sesion.hour.slice(0, -3)}</Grid>
-                                            <Grid item xs={3.5} md={4.5} sx={{display: 'flex', flexDirection: 'row', alignSelf: 'start', }}>
-                                                {!isScreenSizeXSorSM && <LocationOn sx={{position: 'relative', bottom:'5px',  mr: 1}}/>}
-                                                {<p style={{whiteSpace: 'nowrap', overflow: 'hidden'}}> {sesion.place}</p>}
-                                            </Grid>
-                                            <Grid item xs={1.5} md={1} sx={{textAlign:'end'}}>{sesion.duration}'</Grid>
-                                        </Grid>
-                                    </Box>
+                    : <Box sx={{ display:'flex', justifyContent: 'start', mt: {md: 2}, mx:{xs:3, md: 0},}}>
+                        <Grid container gap={5} sx={{ mx: {md: 10}, pb: 10, width: '100%', justifyContent: 'start'}}>
 
-                                    {
-                                        sesion?.films?.map((film) => (
-                                            <Grid container 
-                                                key={film.id}
-                                                sx={{ color: darkMode ? 'black' : 'white', backgroundColor: darkMode ? 'white' : 'black', px: 2, py: 1, borderBottom: darkMode ? '1px solid black' : '1px solid white', fontSize: 14}} 
+                            {data?.data?.sections?.sections?.map((section) => (
+                                <Grid item key={section.id} xs={12} lg={6} xl={4} sx={{minWidth: {xs: '300px', lg: '700px'}, width: '100%'}}>
+                                    <Grid
+                                        sx={{ width: '100%' }}
+                                        component={Link}
+                                        to={`/section/${section.id}`}
+                                    >
+                                        <Box sx={{ width: '100%', height: {xs: '200px', md: '250px'}, overflow: 'hidden', position: 'relative',borderTopLeftRadius: '15px', borderTopRightRadius: '15px' }}>
+                                            <img
+                                                style={{ 
+                                                    width: '100%', 
+                                                    minHeight: '100%', 
+                                                    objectFit: 'cover',   
+                                                    WebkitFilter: 'grayscale(100%)',
+                                                    filter: 'grayscale(100%) brightness(50%)' 
+                                                }}
+                                                src={activeImages[section.id] || `${BASE_URL_BBDD}/${section.image}`}
+                                                alt="foto de Noticia"
+                                            
+                                        />
+                                            <Box
+                                                sx={{
+                                                    position: 'absolute',
+                                                    top: '-5px',
+                                                    pl: 2,
+                                                    width: '100%',
+                                                    overflowWrap: 'break-word', 
+                                                    fontSize: {
+                                                        xs: '50px',
+                                                        md: '70px'
+                                                    },
+                                                    fontWeight: '900',
+                                                    color: 'white',
+                                                    lineHeight: 1.6,
+                                                    textShadow: '6px 6px 15px black',
+                                                    "&:hover": { color: selectedColor }
+                                                }}
+                                            >
+                                                {section.title}
+                                            </Box>
+                                        </Box>
+                                        
+                                    </Grid>
+                                
+                                {
+                                    section.sessions.map((sesion) => (
+                                        <Box
+                                            key={sesion.id}
+                                            sx={{ 
+                                                fontWeight: '300',
+                                                fontSize: '15px',
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                cursor: 'url("./images/faviconInterseccionBold.png") 20 20, auto',
+                                                color: 'white',
+                                                backgroundColor: selectedColor,
+                                                borderBottom: darkMode ? '2px solid black' : '2px solid white' 
+                                            }}
+                                        >
+                                            <Box
+                                                sx={{
+                                                    fontSize: '25px',
+                                                    fontWeight: '900',
+                                                    my: 1,
+                                                    mx: 2,
+                                                    color: 'white',
+                                                    textDecoration: 'none',
+                                                    textTransform: 'uppercase'
+                                                }}
                                                 onMouseOver={() => {
                                                 // Actualizamos activeImages solo para esta sección
                                                     setActiveImages((prevActiveImages) => ({
                                                         ...prevActiveImages,
-                                                        [section.id]: `${BASE_URL_BBDD}/${film.image}`,
+                                                        [section.id]: `${BASE_URL_BBDD}/${sesion.image}`,
                                                     }));
                                                 }}
                                                 onMouseLeave={() => {
@@ -215,26 +189,88 @@ export const ProgramaPage = () => {
                                                     }));
                                                 }}
                                             >
-                                                <Grid item xs={6} sm={7} sx={{fontWeight: '600', pr: 2}}>{film.title}</Grid>
-                                                <Grid item xs={3} sm={3} sx={{pr: 1}}>{film.director}</Grid>
-                                                <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.year}</Grid>
-                                                <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.duration}'</Grid>
-                                            </Grid>
-                                        ))
-                                    }
+                                                <Box
+                                                    component={Link}
+                                                    to={`/sesion/${sesion.id}`} /* /${sesion.id} */
+                                                    sx={{ 
+                                                        textDecoration: "none", 
+                                                        fontSize: '25px',
+                                                        fontWeight: '900',
+                                                        marginTop: '5px',
+                                                        color: 'white',
+                                                    }}
+                                                >
+                                                    {sesion.title}
+                                                </Box>
+                                                <Grid 
+                                                    container 
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        fontSize: {
+                                                            xs: '13px',
+                                                            md: '16px'
+                                                        },
+                                                        height: '16px',
+                                                        fontWeight: '600',
+                                                        mt: 0.5,
+                                                        marginBottom: '6px',
+                                                        
+                                                    }}
+                                                >
+                                                    <Grid item xs={5} sm={5} md={4}> { sesion.weekDay}&nbsp;&nbsp; {new Date(sesion.date).getDate()} </Grid>
+                                                    <Grid item xs={2} md={2}>{sesion.hour.slice(0, -3)}</Grid>
+                                                    <Grid item xs={3.5} md={4.5} sx={{display: 'flex', flexDirection: 'row', alignSelf: 'start', }}>
+                                                        {!isScreenSizeXSorSM && <LocationOn sx={{position: 'relative', bottom:'5px',  mr: 1}}/>}
+                                                        {<p style={{whiteSpace: 'nowrap', overflow: 'hidden'}}> {sesion.place}</p>}
+                                                    </Grid>
+                                                    <Grid item xs={1.5} md={1} sx={{textAlign:'end'}}>{sesion.duration}'</Grid>
+                                                </Grid>
+                                            </Box>
 
-                                    
-                                    
-                                </Box>
+                                            {
+                                                sesion?.films?.map((film) => (
+                                                    <Grid container 
+                                                        key={film.id}
+                                                        sx={{ textDecoration: 'none', color: darkMode ? 'black' : 'white', backgroundColor: darkMode ? 'white' : 'black', px: 2, py: 1, borderBottom: darkMode ? '1px solid black' : '1px solid white', fontSize: 14}} 
+                                                        onMouseOver={() => {
+                                                        // Actualizamos activeImages solo para esta sección
+                                                            setActiveImages((prevActiveImages) => ({
+                                                                ...prevActiveImages,
+                                                                [section.id]: `${BASE_URL_BBDD}/${film.image}`,
+                                                            }));
+                                                        }}
+                                                        onMouseLeave={() => {
+                                                        // Restablecemos activeImages solo para esta sección cuando el ratón sale de la sesión
+                                                            setActiveImages((prevActiveImages) => ({
+                                                                ...prevActiveImages,
+                                                                [section.id]: null,
+                                                            }));
+                                                        }}
+                                                        component={Link}
+                                                        to={`/film/${film.id}`}
+                                                    >
+                                                        <Grid item xs={6} sm={7} sx={{fontWeight: '600', pr: 2, '&:hover': {fontWeight: 900}}}>{film.title}</Grid>
+                                                        <Grid item xs={3} sm={3} sx={{pr: 1}}>{film.director}</Grid>
+                                                        <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.year}</Grid>
+                                                        <Grid item xs={1.5} sm={1} sx={{display: 'flex', justifyContent: 'end'}}>{film.duration}'</Grid>
+                                                    </Grid>
+                                                ))
+                                            }
 
-                            ))
-                        }
+                                            
+                                            
+                                        </Box>
 
-                        
+                                    ))
+                                }
+
+                                
+                                </Grid>
+                            ))}
                         </Grid>
-                    )))
+                    </Box>
                 }
-        </Grid>
     </>
   );
 };

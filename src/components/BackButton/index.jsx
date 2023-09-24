@@ -31,7 +31,7 @@ const BackButton = () => {
                 fontSize: '40px',
                 fontWeight: 900,
                 textTransform: 'uppercase',
-                color: 'transparent',
+                color: darkMode ? 'black' : 'white',
                 lineHeight: 1.4,
                 WebkitTextStroke: darkMode ? '2px white' : '2px black',
                 '&:hover': {
